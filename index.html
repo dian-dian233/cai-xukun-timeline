@@ -4,7 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>蔡徐坤 · 来时路｜一份演出节目单</title>
-<meta name="description" content="把一个人的履历写成一份演出节目单：六场戏，一段来时路。" />
+<meta name="description" content="把一个人的履历写成一份演出节目单：六场戏，一段来时路；另加一格 three.js 立体道具。" />
+<meta name="theme-color" content="#eceadf" />
 <style>
   /* ── 纸张与油墨 ───────────────────────────── */
   :root{
@@ -128,6 +129,36 @@
   @media (prefers-reduced-motion:reduce){
     .rise,.stamp{animation:none;opacity:1;transform:none;}
   }
+
+  /* ── 序幕：立体道具（three.js） ───────────── */
+  .prologue{max-width:var(--maxw);margin:0 auto;padding:clamp(38px,6vw,74px) clamp(20px,5vw,56px) 0;}
+  .prologue .kicker{font-family:"Songti SC",STSong,serif;font-size:13.5px;color:var(--ink-3);letter-spacing:.16em;}
+  .prologue h2{margin:.3em 0 .5em;font-size:clamp(22px,3.2vw,31px);line-height:1.34;font-weight:700;
+    font-family:"Songti SC",STSong,SimSun,serif;letter-spacing:.01em;}
+  .pro-deck{color:var(--ink-2);max-width:58ch;font-size:16.5px;}
+  .stage{
+    position:relative;margin:clamp(18px,3vw,30px) 0 0;border:1px solid var(--ink);overflow:hidden;
+    background:radial-gradient(circle at 50% 40%, #f6f4ea 0%, var(--paper-2) 56%, #d7d3c3 100%);
+    aspect-ratio:16/9;touch-action:none;
+  }
+  .stage::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;mix-blend-mode:multiply;
+    background-image:repeating-linear-gradient(92deg, rgba(25,26,29,.05) 0 1px, transparent 1px 4px);}
+  #stage-canvas{display:block;width:100%;height:100%;cursor:grab;}
+  #stage-canvas.dragging{cursor:grabbing;}
+  .stage-fallback{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:24px;
+    font-family:"Songti SC",STSong,serif;font-size:14px;color:var(--ink-3);letter-spacing:.06em;line-height:1.9;}
+  .stage-fallback.on{display:grid;}
+  .stage-fallback b{display:block;font-size:clamp(38px,11vw,76px);color:var(--stamp);line-height:1;margin-bottom:12px;}
+  .stage-cap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:10px;
+    font-family:"Songti SC",STSong,serif;font-size:12.5px;color:var(--ink-3);letter-spacing:.08em;}
+  .props{margin-top:clamp(20px,3vw,30px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.4vw,26px);}
+  .prop{border-top:1px solid var(--ink);padding-top:12px;}
+  .prop b{display:block;font-family:"Songti SC",STSong,serif;font-size:15px;letter-spacing:.12em;color:var(--stamp);}
+  .prop span{display:block;margin-top:6px;font-size:14px;color:var(--ink-3);line-height:1.72;}
+  @media (max-width:720px){
+    .stage{aspect-ratio:4/3;}
+    .props{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
@@ -165,6 +196,25 @@
     </nav>
   </div>
 </header>
+
+<section class="prologue" aria-labelledby="prologue-h">
+  <p class="kicker">序幕 / PROLOGUE</p>
+  <h2 id="prologue-h" class="serif">三件道具，一句台词</h2>
+  <p class="pro-deck">球、中分、背带裤。在台上它们只是道具，进了弹幕就成了梗。这一格是立体的，按住拖一拖，可以转到背面去看。</p>
+
+  <figure class="stage" style="margin-left:0;margin-right:0;">
+    <canvas id="stage-canvas" aria-label="三件道具的立体模型：篮球、中分发型、背带裤"></canvas>
+    <div class="stage-fallback" id="stage-fallback"><div><b>🏀</b>这台设备放不出立体舞台<br />那就当道具箱先合上，文字版照样能看</div></div>
+  </figure>
+  <figcaption class="stage-cap"><span>① 篮球 · ② 中分 · ③ 背带裤</span><span>拖动旋转 · 滚轮缩放 · 松手会自己转回去</span></figcaption>
+
+  <div class="props">
+    <div class="prop"><b>篮球</b><span>第四场那支视频的道具。本来是代言花絮，后来成了一个动作的总称。</span></div>
+    <div class="prop"><b>中分</b><span>最便宜的角色设定：往两边一分，人就出场了，连字幕都省。</span></div>
+    <div class="prop"><b>背带裤</b><span>两根带子，一条裤。舞台装里最不挑人的一件，也最容易被画成简笔画。</span></div>
+  </div>
+</section>
+
 
 <main>
 
@@ -233,8 +283,240 @@
 
 <footer class="colophon">
   本站是一份粉丝向的<b>迷因 · 时间轴</b>单页，内容只取自公开报道与公开舞台信息，不含未经证实的指控与评价；若与官方说法有出入，以官方为准。<br />
-  文字、版式与代码由 <a href="https://github.com/dian-dian233" rel="noopener">点点</a> 制作 · 源码在 <a href="https://github.com/dian-dian233/cai-xukun-timeline" rel="noopener">GitHub</a> · 一言不合就重排一版 🍚
+  文字、版式与代码由 <a href="https://github.com/dian-dian233" rel="noopener">点点</a> 制作 · 源码在 <a href="https://github.com/dian-dian233/cai-xukun-timeline" rel="noopener">GitHub</a> · 一言不合就重排一版 · v3 加了一层 three.js 立体舞台 🏀
 </footer>
+
+
+<script type="module">
+(() => {
+  const cv = document.getElementById('stage-canvas');
+  const stage = cv.parentElement;
+  const fb = document.getElementById('stage-fallback');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fail = () => { fb.classList.add('on'); cv.style.display = 'none'; };
+
+  const probe = document.createElement('canvas');
+  if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) { fail(); return; }
+
+  const CDNS = [
+    'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js',
+    'https://unpkg.com/three@0.160.0/build/three.module.js',
+    'https://esm.sh/three@0.160.0'
+  ];
+
+  (async () => {
+    let THREE = null;
+    for (const url of CDNS) {
+      try { THREE = await import(url); break; } catch (err) { /* 换个源再试 */ }
+    }
+    if (!THREE) { fail(); return; }
+
+    let renderer = null;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true });
+    } catch (err) { fail(); return; }
+
+    const PAPER = 0xeceadf;
+    const INK = 0x1b1c1f;
+    const GILT = 0x9a7b3f;
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(PAPER, 10, 19);
+
+    const camera = new THREE.PerspectiveCamera(34, 16 / 9, 0.1, 60);
+    camera.position.set(0, 0.4, 8.4);
+
+    scene.add(new THREE.HemisphereLight(0xfffaf0, 0x8b8676, 1.0));
+    const key = new THREE.DirectionalLight(0xfff6e6, 1.25);
+    key.position.set(3.4, 5.4, 4.6);
+    scene.add(key);
+    const fill = new THREE.DirectionalLight(0xffffff, 0.32);
+    fill.position.set(-4.2, -1.8, 3.2);
+    scene.add(fill);
+
+    const rig = new THREE.Group();
+    scene.add(rig);
+
+    /* ── 道具一：篮球 ───────────────────────── */
+    function leatherTexture() {
+      const c = document.createElement('canvas');
+      c.width = 1024; c.height = 512;
+      const g = c.getContext('2d');
+      g.fillStyle = '#c25a2a';
+      g.fillRect(0, 0, 1024, 512);
+      for (let i = 0; i < 3200; i++) {
+        g.fillStyle = 'rgba(' + (110 + Math.random() * 60 | 0) + ',' + (55 + Math.random() * 30 | 0) + ',22,' + (Math.random() * 0.10) + ')';
+        g.fillRect(Math.random() * 1024, Math.random() * 512, 2, 2);
+      }
+      g.strokeStyle = '#2a1a12';
+      g.lineWidth = 10;
+      g.lineCap = 'round';
+      g.beginPath(); g.moveTo(0, 256); g.lineTo(1024, 256); g.stroke();
+      [256, 768].forEach((u) => {
+        g.beginPath();
+        g.moveTo(u, 0);
+        g.bezierCurveTo(u - 130, 150, u - 130, 362, u, 512);
+        g.stroke();
+      });
+      g.beginPath(); g.moveTo(0, 74); g.bezierCurveTo(320, 210, 704, 302, 1024, 438); g.stroke();
+      g.beginPath(); g.moveTo(0, 438); g.bezierCurveTo(320, 302, 704, 210, 1024, 74); g.stroke();
+      const tex = new THREE.CanvasTexture(c);
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.anisotropy = 4;
+      return tex;
+    }
+
+    const ball = new THREE.Mesh(
+      new THREE.SphereGeometry(1.14, 64, 44),
+      new THREE.MeshStandardMaterial({ map: leatherTexture(), roughness: 0.94, metalness: 0.0 })
+    );
+    ball.position.set(-2.62, 0.16, 0);
+    rig.add(ball);
+
+    /* ── 道具二：中分 ───────────────────────── */
+    const hair = new THREE.Group();
+    const skinMat = new THREE.MeshStandardMaterial({ color: 0xe8dbc8, roughness: 0.95 });
+    const hairMat = new THREE.MeshStandardMaterial({ color: INK, roughness: 0.88, side: THREE.DoubleSide });
+
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.72, 44, 32), skinMat);
+    head.scale.set(1, 1.1, 0.97);
+    hair.add(head);
+
+    const shell = new THREE.SphereGeometry(0.795, 44, 30, -Math.PI * 0.48, Math.PI * 0.96, 0, Math.PI * 0.62);
+    const leftLock = new THREE.Mesh(shell, hairMat);
+    const rightLock = new THREE.Mesh(shell, hairMat);
+    rightLock.rotation.y = Math.PI;
+    hair.add(leftLock, rightLock);
+
+    const earGeo = new THREE.SphereGeometry(0.15, 20, 14);
+    [-1, 1].forEach((s) => {
+      const ear = new THREE.Mesh(earGeo, skinMat);
+      ear.position.set(s * 0.7, -0.02, 0);
+      ear.scale.set(0.7, 1, 0.55);
+      hair.add(ear);
+    });
+    hair.position.set(0.05, 0.12, 0);
+    hair.scale.setScalar(0.95);
+    rig.add(hair);
+
+    /* ── 道具三：背带裤 ─────────────────────── */
+    const overalls = new THREE.Group();
+    const denimMat = new THREE.MeshStandardMaterial({ color: 0x2f3a4a, roughness: 0.9 });
+    const bibMat = new THREE.MeshStandardMaterial({ color: 0x3a4658, roughness: 0.9 });
+    const buttonMat = new THREE.MeshStandardMaterial({ color: GILT, roughness: 0.45, metalness: 0.55 });
+
+    const body = new THREE.Mesh(new THREE.BoxGeometry(1.02, 0.86, 0.38), denimMat);
+    body.position.y = 0.02;
+    overalls.add(body);
+
+    const bib = new THREE.Mesh(new THREE.BoxGeometry(0.66, 0.42, 0.4), bibMat);
+    bib.position.y = 0.55;
+    overalls.add(bib);
+
+    [-1, 1].forEach((s) => {
+      const strap = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.86, 0.08), denimMat);
+      strap.position.set(s * 0.31, 0.72, 0.17);
+      strap.rotation.z = s * -0.14;
+      overalls.add(strap);
+
+      const knob = new THREE.Mesh(new THREE.CylinderGeometry(0.058, 0.058, 0.06, 18), buttonMat);
+      knob.rotation.x = Math.PI / 2;
+      knob.position.set(s * 0.31, 0.74, 0.21);
+      overalls.add(knob);
+
+      const leg = new THREE.Mesh(new THREE.BoxGeometry(0.44, 0.74, 0.36), denimMat);
+      leg.position.set(s * 0.27, -0.76, 0);
+      overalls.add(leg);
+    });
+    overalls.position.set(2.6, 0.02, 0);
+    rig.add(overalls);
+
+    /* ── 影子（纸质淡影） ───────────────────── */
+    const shadowMat = new THREE.MeshBasicMaterial({ color: INK, transparent: true, opacity: 0.07, depthWrite: false });
+    [-2.62, 0.05, 2.6].forEach((x) => {
+      const s = new THREE.Mesh(new THREE.CircleGeometry(0.92, 40), shadowMat);
+      s.rotation.x = -Math.PI / 2;
+      s.position.set(x, -1.62, 0);
+      s.scale.set(1, 0.42, 1);
+      rig.add(s);
+    });
+
+    /* ── 布局与尺寸 ─────────────────────────── */
+    function resize() {
+      const w = Math.max(1, stage.clientWidth);
+      const h = Math.max(1, stage.clientHeight);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      renderer.setPixelRatio(dpr);
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    if (window.ResizeObserver) { new ResizeObserver(resize).observe(stage); }
+    else { window.addEventListener('resize', resize); }
+
+    /* ── 交互：拖动 / 视差 / 缩放 ───────────── */
+    let userY = 0, userX = 0, px = 0, py = 0;
+    let dragging = false, lastX = 0, lastY = 0;
+
+    cv.addEventListener('pointerdown', (e) => {
+      dragging = true; lastX = e.clientX; lastY = e.clientY;
+      cv.classList.add('dragging');
+      if (cv.setPointerCapture) { try { cv.setPointerCapture(e.pointerId); } catch (err) {} }
+    });
+    cv.addEventListener('pointermove', (e) => {
+      if (dragging) {
+        userY += (e.clientX - lastX) * 0.008;
+        userX += (e.clientY - lastY) * 0.005;
+        userX = Math.max(-0.55, Math.min(0.55, userX));
+        lastX = e.clientX; lastY = e.clientY;
+      } else {
+        const r = cv.getBoundingClientRect();
+        px = ((e.clientX - r.left) / r.width - 0.5) * 2;
+        py = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      }
+    });
+    const stopDrag = () => { dragging = false; cv.classList.remove('dragging'); };
+    cv.addEventListener('pointerup', stopDrag);
+    cv.addEventListener('pointercancel', stopDrag);
+    cv.addEventListener('pointerleave', () => { px = 0; py = 0; });
+    cv.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      camera.position.z = Math.max(5.4, Math.min(12.5, camera.position.z + e.deltaY * 0.0035));
+    }, { passive: false });
+
+    /* ── 动画 ───────────────────────────────── */
+    const floaters = [
+      { o: ball, base: 0.16, amp: 0.10, sp: 0.85, ph: 0 },
+      { o: hair, base: 0.12, amp: 0.13, sp: 1.10, ph: 1.7 },
+      { o: overalls, base: 0.02, amp: 0.09, sp: 0.72, ph: 3.2 }
+    ];
+    let spin = 0;
+
+    function draw(now) {
+      const t = now / 1000;
+      spin += 0.0022;
+      floaters.forEach((p) => {
+        p.o.position.y = p.base + Math.sin(t * p.sp + p.ph) * p.amp;
+        p.o.rotation.y += 0.0026 * p.sp;
+      });
+      ball.rotation.z = Math.sin(t * 0.4) * 0.14;
+      if (!dragging) { userY *= 0.996; userX *= 0.99; }
+      rig.rotation.y = spin + userY + px * 0.16;
+      rig.rotation.x = userX + py * 0.10;
+      renderer.render(scene, camera);
+    }
+
+    if (reduce) {
+      draw(0);
+      renderer.render(scene, camera);
+    } else {
+      const loop = (now) => { draw(now); requestAnimationFrame(loop); };
+      requestAnimationFrame(loop);
+    }
+  })();
+})();
+</script>
 
 </body>
 </html>
