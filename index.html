@@ -4,302 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>蔡徐坤 · 来时路｜一人六场的演出节目单</title>
-<meta name="description" content="把一个人的履历写成一份演出节目单：试镜、成团、登顶、转折、自述、中场，六场戏，一段来时路。" />
+<meta name="description" content="把一个人的履历写成一份演出节目单：试镜、成团、登顶、转折、自述、中场，六场戏，一段来时路。附经典元素：篮球、中分、背带裤、只因你太美。" />
 <meta name="theme-color" content="#0a0a0c" />
 <meta property="og:title" content="蔡徐坤 · 来时路" />
 <meta property="og:description" content="一人六场 · 一份关于舞台与弹幕的演出节目单。" />
 <meta property="og:type" content="website" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0c'/%3E%3Ctext x='16' y='23' font-size='18' font-family='serif' fill='%23d8b26a' text-anchor='middle'%3E来%3C/text%3E%3C/svg%3E" />
-<style>
-  /* ══════════════════════════════════════════
-     变量 / 暗场剧场
-     ══════════════════════════════════════════ */
-  :root{
-    --ink:#0a0a0c;
-    --ink-2:#0e0e11;
-    --ink-3:#14141a;
-    --paper:#f4f1e8;
-    --paper-2:#cfcbc0;
-    --muted:#8f8b83;
-    --muted-2:#686760;
-    --gold:#d8b26a;
-    --gold-2:#f0dcae;
-    --crimson:#b8362f;
-    --line:rgba(244,241,232,.11);
-    --line-2:rgba(244,241,232,.06);
-    --wrap:1140px;
-    --pad:clamp(20px,5vw,64px);
-    --serif:"Songti SC","Songti TC","Noto Serif CJK SC","Source Han Serif SC",STSong,SimSun,serif;
-    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
-  body{
-    background:var(--ink);
-    color:var(--paper);
-    font-family:var(--sans);
-    font-size:16px;
-    line-height:1.85;
-    letter-spacing:.01em;
-    overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-  }
-  ::selection{background:rgba(216,178,106,.28);color:#fff;}
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad);}
-  .mono{
-    font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;
-    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
-  }
-  .serif{font-family:var(--serif);}
-
-  /* 胶片颗粒 */
-  .grain{
-    position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.32;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-  }
-  /* 阅读进度 */
-  .progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:70;background:transparent;}
-  .progress i{
-    display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;
-    background:linear-gradient(90deg,var(--crimson),var(--gold) 55%,var(--gold-2));
-  }
-
-  /* ══════════════════════════════════════════
-     首屏
-     ══════════════════════════════════════════ */
-  .hero{
-    position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-    padding-top:clamp(28px,6vh,64px);padding-bottom:clamp(28px,6vh,56px);
-    overflow:hidden;
-    --mx:50%;--my:38%;
-    background:
-      radial-gradient(680px 520px at var(--mx) var(--my), rgba(216,178,106,.15), transparent 62%),
-      radial-gradient(900px 600px at 82% 8%, rgba(184,54,47,.10), transparent 60%),
-      linear-gradient(180deg,#0d0d11,#0a0a0c 62%,#08080a);
-  }
-  .hero::after{
-    content:"";position:absolute;inset:auto 0 0 0;height:38%;
-    background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));
-    pointer-events:none;
-  }
-  .topbar{
-    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-    padding-bottom:14px;border-bottom:1px solid var(--line);position:relative;z-index:2;
-  }
-  .hero-main{
-    display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(16px,4vw,48px);
-    align-items:start;padding:clamp(36px,7vh,76px) 0 clamp(26px,4vh,40px);position:relative;z-index:2;
-  }
-  .eyebrow{
-    font-family:var(--serif);font-size:13px;letter-spacing:.34em;color:var(--gold);
-    display:flex;align-items:center;gap:14px;
-  }
-  .eyebrow::after{content:"";height:1px;flex:1;max-width:110px;background:linear-gradient(90deg,var(--gold),transparent);}
-  .display{
-    position:relative;
-    font-family:var(--serif);font-weight:700;
-    font-size:clamp(56px,12.5vw,150px);line-height:1.02;letter-spacing:.05em;
-    margin:.1em 0 .12em -.04em;
-    background:linear-gradient(178deg,#fffdf6 12%,#f0e6cd 46%,#c9b48a 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .display .wm{display:none;}
-  .deck{
-    max-width:46ch;color:var(--paper-2);font-size:clamp(15px,1.5vw,17px);line-height:1.95;
-    padding-left:14px;border-left:2px solid rgba(216,178,106,.5);
-  }
-  .hero-side{display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:6px;}
-  .vtitle{
-    writing-mode:vertical-rl;font-family:var(--serif);font-weight:600;
-    font-size:clamp(30px,4.4vw,56px);letter-spacing:.34em;line-height:1;
-    padding:18px 8px;color:rgba(244,241,232,.9);
-    border-left:1px solid var(--line);border-right:1px solid var(--line);
-  }
-  .stamp{
-    display:inline-block;transform:rotate(-8deg);
-    border:1.5px solid rgba(184,54,47,.85);color:#d9605a;
-    font-family:var(--serif);font-weight:700;font-size:12.5px;letter-spacing:.26em;
-    padding:5px 9px 6px;border-radius:2px;
-    box-shadow:inset 0 0 0 1px rgba(184,54,47,.25);
-    opacity:0;animation:press .6s cubic-bezier(.2,.8,.2,1) .9s forwards;
-  }
-  @keyframes press{from{opacity:0;transform:rotate(-8deg) scale(1.7)}to{opacity:1;transform:rotate(-8deg) scale(1)}}
-
-  .meta{
-    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-    border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:2;
-  }
-  .meta div{padding:16px 18px 18px 0;}
-  .meta div + div{padding-left:22px;border-left:1px solid var(--line-2);}
-  .meta dt{font-size:11.5px;letter-spacing:.2em;color:var(--muted);margin-bottom:6px;}
-  .meta dd{font-family:var(--serif);font-size:15.5px;color:var(--paper);letter-spacing:.02em;}
-  .scroll{
-    display:inline-flex;align-items:center;gap:12px;margin-top:clamp(24px,4vh,38px);
-    font-size:12px;letter-spacing:.24em;color:var(--muted);position:relative;z-index:2;
-    transition:color .3s;
-  }
-  .scroll:hover{color:var(--gold);}
-  .scroll i{display:block;width:56px;height:1px;background:var(--muted);position:relative;overflow:hidden;}
-  .scroll i::after{
-    content:"";position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);
-    animation:sweep 2.4s ease-in-out infinite;
-  }
-  @keyframes sweep{0%{transform:translateX(-100%)}55%{transform:translateX(0)}100%{transform:translateX(100%)}}
-
-  /* ══════════════════════════════════════════
-     目录
-     ══════════════════════════════════════════ */
-  .index{padding:clamp(56px,10vh,104px) 0 clamp(20px,4vh,36px);}
-  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;
-            padding-bottom:18px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
-  .sec-title{font-family:var(--serif);font-size:clamp(22px,3vw,30px);letter-spacing:.16em;font-weight:600;}
-  .sec-title span{margin-left:12px;font-family:ui-monospace,monospace;font-size:11px;
-                  letter-spacing:.24em;color:var(--muted);vertical-align:middle;}
-  .toc{list-style:none;counter-reset:t;}
-  .toc a{
-    display:grid;grid-template-columns:3.4em minmax(0,1fr) auto;align-items:baseline;gap:16px;
-    padding:17px 12px;border-bottom:1px solid var(--line-2);
-    position:relative;z-index:0;transition:padding-left .35s cubic-bezier(.2,.8,.2,1),color .3s;
-  }
-  .toc a::before{
-    content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .35s;
-    background:linear-gradient(90deg,rgba(216,178,106,.14),rgba(216,178,106,.02) 60%,transparent);
-  }
-  .toc a:hover,.toc a:focus-visible{padding-left:22px;color:#fff;outline:none;}
-  .toc a:hover::before,.toc a:focus-visible::before{opacity:1;}
-  .toc a:hover .n{color:var(--gold-2);}
-  .toc .n{font-family:ui-monospace,monospace;font-size:12.5px;letter-spacing:.14em;color:var(--gold);transition:color .3s;}
-  .toc .t{font-family:var(--serif);font-size:clamp(16px,2vw,20px);letter-spacing:.04em;color:var(--paper);}
-  .toc .y{font-family:ui-monospace,monospace;font-size:12.5px;letter-spacing:.12em;color:var(--muted);white-space:nowrap;}
-
-  /* ══════════════════════════════════════════
-     正文：场次
-     ══════════════════════════════════════════ */
-  .acts{padding-bottom:clamp(40px,8vh,80px);}
-  .act{
-    display:grid;grid-template-columns:clamp(96px,13vw,168px) minmax(0,1fr);
-    gap:clamp(18px,4vw,52px);
-    padding:clamp(36px,6vh,64px) 0;
-    border-top:1px solid var(--line);
-  }
-  .act:first-child{border-top:none;}
-  .aside{position:sticky;top:88px;align-self:start;display:flex;flex-direction:column;gap:10px;}
-  .aside .num{
-    font-family:var(--serif);font-size:clamp(46px,6.6vw,84px);line-height:.9;font-weight:700;
-    color:transparent;-webkit-text-stroke:1px rgba(216,178,106,.55);letter-spacing:.02em;
-    transition:-webkit-text-stroke .4s,color .4s;
-  }
-  .act:hover .aside .num{color:rgba(216,178,106,.1);-webkit-text-stroke:1px rgba(216,178,106,.85);}
-  .aside .yr{font-family:ui-monospace,monospace;font-size:12.5px;letter-spacing:.16em;color:var(--gold);}
-  .aside .tag{font-family:var(--serif);font-size:12.5px;letter-spacing:.3em;color:var(--muted);}
-  .body{border-left:1px solid var(--line);padding-left:clamp(16px,2.6vw,30px);position:relative;}
-  .body::before{
-    content:"";position:absolute;left:-4px;top:12px;width:7px;height:7px;border-radius:50%;
-    background:var(--gold);box-shadow:0 0 0 4px rgba(216,178,106,.12);
-  }
-  .body h2{
-    font-family:var(--serif);font-weight:700;font-size:clamp(21px,3.2vw,32px);line-height:1.42;
-    letter-spacing:.015em;margin-bottom:.7em;
-  }
-  .body p{color:var(--paper-2);max-width:60ch;margin-bottom:.95em;}
-  .body p:last-child{margin-bottom:0;}
-  .body .cue{
-    margin-top:20px;padding:16px 18px;max-width:56ch;
-    border-left:2px solid var(--crimson);background:linear-gradient(90deg,rgba(184,54,47,.10),transparent 78%);
-    font-family:var(--serif);font-size:15.5px;color:#efe7d7;line-height:1.85;
-  }
-  .body .cue b{display:block;font-family:var(--sans);font-weight:600;font-size:11px;
-               letter-spacing:.24em;color:#d9605a;margin-bottom:4px;}
-  .body .aside-note{
-    margin-top:20px;font-size:13.5px;color:var(--muted);max-width:56ch;
-    padding-top:14px;border-top:1px dotted rgba(244,241,232,.18);
-  }
-
-  /* 第四场：玩梗专场 */
-  .act--meme .body{
-    border-left-color:rgba(184,54,47,.45);
-  }
-  .act--meme .body::before{background:var(--crimson);box-shadow:0 0 0 4px rgba(184,54,47,.16);}
-  .meme-line{
-    display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;
-    margin:22px 0 4px;font-family:var(--serif);letter-spacing:.06em;
-  }
-  .meme-line .a{
-    font-size:clamp(26px,4.6vw,46px);font-weight:700;color:#f3e9d4;
-    text-shadow:0 0 36px rgba(184,54,47,.45);
-  }
-  .meme-line .arrow{color:var(--muted-2);font-size:14px;letter-spacing:.3em;}
-  .meme-line .b{
-    font-size:clamp(26px,4.6vw,46px);font-weight:700;
-    background:linear-gradient(100deg,#ff8a72,#d8b26a);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-
-  /* ══════════════════════════════════════════
-     谢幕
-     ══════════════════════════════════════════ */
-  .curtain{
-    position:relative;padding:clamp(64px,12vh,120px) 0;border-top:1px solid var(--line);
-    background:radial-gradient(760px 420px at 50% 0%,rgba(216,178,106,.10),transparent 68%);
-    text-align:center;
-  }
-  .curtain .kicker{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.3em;color:var(--gold);}
-  .curtain h2{
-    font-family:var(--serif);font-weight:700;font-size:clamp(25px,4.4vw,46px);line-height:1.35;
-    letter-spacing:.02em;margin:18px auto .5em;max-width:22ch;
-    background:linear-gradient(180deg,#fffdf6,#d8c9a6 75%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .curtain p{color:var(--paper-2);max-width:56ch;margin:0 auto .8em;font-size:15.5px;}
-  .curtain .fin{margin-top:34px;font-family:var(--serif);font-size:13px;letter-spacing:.5em;color:var(--muted);}
-  .curtain .fin::before,.curtain .fin::after{content:"·";margin:0 .9em;color:var(--gold);}
-
-  footer.colophon{
-    padding:26px 0 64px;border-top:1px solid var(--line-2);
-    font-size:12.5px;line-height:2;color:var(--muted-2);
-  }
-  footer.colophon a{color:var(--gold);border-bottom:1px solid rgba(216,178,106,.3);transition:color .3s;}
-  footer.colophon a:hover{color:var(--gold-2);}
-  footer .row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:14px;}
-
-  /* ══════════════════════════════════════════
-     入场
-     ══════════════════════════════════════════ */
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);}
-  .reveal.in{opacity:1;transform:none;}
-  .hero .reveal{transition-delay:.05s;}
-
-  /* ══════════════════════════════════════════
-     自适应
-     ══════════════════════════════════════════ */
-  @media (max-width:860px){
-    .meta{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .meta div:nth-child(3){border-left:none;padding-left:0;}
-    .meta div:nth-child(n+3){border-top:1px solid var(--line-2);}
-  }
-  @media (max-width:720px){
-    body{font-size:15.5px;}
-    .hero{min-height:auto;padding-top:96px;}
-    .hero-main{grid-template-columns:1fr;gap:26px;padding-top:34px;}
-    .hero-side{flex-direction:row;align-items:center;justify-content:space-between;order:-1;}
-    .vtitle{writing-mode:horizontal-tb;border:none;padding:0;font-size:30px;letter-spacing:.2em;}
-    .act{grid-template-columns:1fr;gap:14px;}
-    .aside{position:static;flex-direction:row;align-items:baseline;gap:14px;}
-    .aside .num{font-size:40px;}
-    .body{padding-left:16px;}
-    .toc a{grid-template-columns:2.2em minmax(0,1fr) auto;gap:10px;padding:15px 6px;}
-    .toc .y{grid-column:auto;font-size:11px;}
-    .sec-head .mono{font-size:10.5px;}
-    .meme-line{flex-direction:column;align-items:flex-start;gap:6px;}
-    .meme-line .arrow{font-size:11px;letter-spacing:.2em;}
-  }
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto;}
-    .reveal,.stamp{opacity:1!important;transform:none!important;transition:none!important;animation:none!important;}
-    .scroll i::after{animation:none;}
-  }
-</style>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 
@@ -322,6 +33,7 @@
       <div class="hero-side">
         <span class="vtitle serif">来时路</span>
         <span class="stamp">全本上演</span>
+        <div class="orn reveal" aria-hidden="true"><canvas id="heroBall"></canvas></div>
       </div>
     </div>
 
@@ -335,6 +47,13 @@
     <a class="scroll" href="#index">向下 · 开幕<i aria-hidden="true"></i></a>
   </div>
 </header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>只因你太美 <i>·</i> <b>鸡你太美</b> <i>·</i> 一颗篮球 <i>·</i> 中分头 <i>·</i> 背带裤 <i>·</i> C 位 <i>·</i> 顶流 <i>·</i> 打铁 <i>·</i> 你干嘛~ <i>·</i> </span>
+    <span>只因你太美 <i>·</i> <b>鸡你太美</b> <i>·</i> 一颗篮球 <i>·</i> 中分头 <i>·</i> 背带裤 <i>·</i> C 位 <i>·</i> 顶流 <i>·</i> 打铁 <i>·</i> 你干嘛~ <i>·</i> </span>
+  </div>
+</div>
 
 <section class="index" id="index">
   <div class="wrap">
@@ -396,6 +115,11 @@
   </article>
 
   <article class="act act--meme" id="act-4">
+    <svg class="ball-mark" viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="100" cy="100" r="97"/>
+      <path d="M100 3v194M3 100h194"/>
+      <path d="M100 3C42 29 42 171 100 197M100 3c58 26 58 168 0 194"/>
+    </svg>
     <div class="aside">
       <span class="num serif" aria-hidden="true">04</span>
       <span class="yr">2018 · 夏</span>
@@ -404,11 +128,18 @@
     <div class="body">
       <h2 class="reveal">转折：一支篮球视频</h2>
       <p class="reveal">代言花絮里的一段篮球表演，被拆成帧、配上音乐、剪成上万个版本。一个谐音被耳朵听错，从此变成全民口头禅。</p>
+
       <div class="meme-line reveal">
         <span class="a serif">只因你太美</span>
         <span class="arrow" aria-hidden="true">→ 听错 →</span>
         <span class="b serif">鸡你太美</span>
       </div>
+
+      <div class="meme-visual reveal">
+        <canvas id="memeBall" role="button" tabindex="0" aria-label="拍一下篮球"></canvas>
+        <span class="hit" id="hitHint">拍它一下 ↓</span>
+      </div>
+
       <p class="reveal">从此他活在了弹幕里。喜欢他的人、不认识他的人、纯粹来玩梗的人，在同一个梗里相遇。一个偶像的公众形象，第一次既不是由作品、也不是由他自己决定的。</p>
       <div class="cue reveal"><b>舞台提示</b>这一场没有台词，只有评论。它是整份节目单里最长的一幕，也最难落幕。</div>
     </div>
@@ -442,6 +173,77 @@
 
 </main>
 
+<section class="motifs">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">经典元素<span>MOTIFS</span></h2>
+      <span class="mono">Basketball · Haircut · Overalls · Chicken</span>
+    </div>
+
+    <div class="motif-grid">
+      <article class="motif motif--ball reveal">
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <circle class="ball-fill" cx="32" cy="32" r="23"/>
+            <path d="M9 32h46M32 9v46"/>
+            <path d="M32 9c-12 7-12 39 0 46M32 9c12 7 12 39 0 46"/>
+          </svg>
+        </div>
+        <h3>篮球</h3>
+        <p>一段花絮里的运球，被拆成一帧一帧，最后长成了整个互联网的背景音乐。</p>
+        <span class="idx">01</span>
+      </article>
+
+      <article class="motif reveal">
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <path d="M13 34C13 20 21 12 32 12s19 8 19 22"/>
+            <path d="M32 12v9"/>
+            <path d="M32 21c-8 0-13 5-16 13"/>
+            <path d="M32 21c8 0 13 5 16 13"/>
+            <path d="M20 34c1 10 5 16 12 16s11-6 12-16"/>
+          </svg>
+        </div>
+        <h3>中分头</h3>
+        <p>一条从正中间分开的发缝，比任何发型都更容易被画成表情包。</p>
+        <span class="idx">02</span>
+      </article>
+
+      <article class="motif reveal">
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <path d="M21 27h22v25H21z"/>
+            <path d="M24 27V14h16v13"/>
+            <path d="M24 14 19 7M40 14l5-7"/>
+            <path d="M27 35h10"/>
+            <path d="M21 38h22"/>
+          </svg>
+        </div>
+        <h3>背带裤</h3>
+        <p>蓝色牛仔、两条背带，一套被反复二创的舞台造型——也是他最早的“制服”。</p>
+        <span class="idx">03</span>
+      </article>
+
+      <article class="motif motif--chicken reveal">
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <circle cx="30" cy="27" r="8"/>
+            <path d="M26 19c1-4 3-3 3-1 1-4 3-3 3-1 1-3 3-2 2 1"/>
+            <path d="M22 27l-7 2 7 2"/>
+            <circle cx="31" cy="24" r=".9"/>
+            <path d="M30 35c-8 0-14 6-14 13 0 5 5 8 13 8 9 0 17-4 22-10"/>
+            <path d="M52 33c4-3 8-3 9-1-4 1-6 4-5 8"/>
+            <path d="M31 56v5M37 56l2 5"/>
+          </svg>
+        </div>
+        <h3>只因你太美</h3>
+        <p>原词其实写的是“只因”。被耳朵听错一次，就再也没改回来。</p>
+        <span class="idx">04</span>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="curtain">
   <div class="wrap">
     <p class="kicker reveal">CURTAIN CALL</p>
@@ -462,48 +264,6 @@
   </div>
 </footer>
 
-<script>
-(function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* 首屏光斑跟随指针 */
-  var hero = document.querySelector('.hero');
-  if (!reduce && hero && window.matchMedia('(hover:hover)').matches) {
-    hero.addEventListener('pointermove', function(e){
-      var r = hero.getBoundingClientRect();
-      hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
-      hero.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
-    }, {passive:true});
-  }
-
-  /* 入场 */
-  var items = document.querySelectorAll('.reveal');
-  if (reduce || !('IntersectionObserver' in window)) {
-    items.forEach(function(el){ el.classList.add('in'); });
-  } else {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-      });
-    }, {rootMargin:'0px 0px -8% 0px', threshold:0.12});
-    items.forEach(function(el){ io.observe(el); });
-  }
-
-  /* 阅读进度 */
-  var bar = document.getElementById('bar');
-  var ticking = false;
-  function paint(){
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    var p = h > 0 ? Math.min(1, window.scrollY / h) : 0;
-    bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
-    ticking = false;
-  }
-  window.addEventListener('scroll', function(){
-    if (!ticking) { ticking = true; requestAnimationFrame(paint); }
-  }, {passive:true});
-  window.addEventListener('resize', paint, {passive:true});
-  paint();
-})();
-</script>
+<script src="assets/app.js" defer></script>
 </body>
 </html>
