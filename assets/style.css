@@ -148,6 +148,10 @@ a{color:inherit;text-decoration:none;}
 .toc .n{font-family:ui-monospace,monospace;font-size:12.5px;letter-spacing:.14em;color:var(--gold);transition:color .3s;}
 .toc .t{font-family:var(--serif);font-size:clamp(16px,2vw,20px);letter-spacing:.04em;color:var(--paper);}
 .toc .y{font-family:ui-monospace,monospace;font-size:12.5px;letter-spacing:.12em;color:var(--muted);white-space:nowrap;}
+.toc .toc-il a{background:linear-gradient(90deg,rgba(184,54,47,.10),rgba(184,54,47,.01) 55%,transparent);}
+.toc .toc-il .n{color:#d9605a;letter-spacing:0;}
+.toc .toc-il .t{color:#e8dcc4;}
+.toc .toc-il .y{color:#c9564e;}
 
 /* ══════════ 场次 ══════════ */
 .acts{padding-bottom:clamp(40px,8vh,80px);}
@@ -262,6 +266,86 @@ a{color:inherit;text-decoration:none;}
 .motif--chicken:hover .ico{animation:peck .8s ease-in-out infinite;}
 @keyframes peck{0%,100%{transform:rotate(-2deg)}45%{transform:rotate(9deg) translateY(2px)}}
 
+/* ══════════ 幕间：两年半 ══════════ */
+.interlude{
+  position:relative;overflow:hidden;
+  padding:clamp(56px,10vh,112px) 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(720px 460px at 10% 16%, rgba(232,121,31,.14), transparent 62%),
+    radial-gradient(620px 420px at 92% 86%, rgba(184,54,47,.13), transparent 64%),
+    linear-gradient(180deg,#0b0b0e,#08080a);
+}
+.interlude::before{
+  content:"2.5";position:absolute;right:2%;bottom:-7%;top:auto;
+  font-family:var(--serif);font-weight:700;font-size:clamp(150px,19vw,290px);line-height:.78;
+  color:transparent;-webkit-text-stroke:1px rgba(216,178,106,.13);pointer-events:none;
+}
+.il-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+         gap:clamp(26px,5vw,66px);align-items:center;}
+.il-kicker{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.3em;
+           text-transform:uppercase;color:var(--orange);}
+.il-title{
+  font-family:var(--serif);font-weight:700;line-height:1;letter-spacing:.06em;
+  font-size:clamp(56px,10vw,132px);margin:.14em 0 .06em;margin-left:-.05em;
+  background:linear-gradient(175deg,#fffdf6 8%,#f4e4c2 42%,#c88a3c 78%,#8d5a1d 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 60px rgba(232,121,31,.18);
+}
+.il-sub{color:var(--paper-2);font-size:clamp(14px,1.4vw,16px);max-width:34ch;line-height:1.9;}
+.il-quote{
+  margin-top:clamp(20px,3vh,30px);padding-left:16px;border-left:2px solid var(--crimson);
+  font-family:var(--serif);font-size:clamp(17px,2.1vw,23px);line-height:1.85;color:#f2eada;
+  letter-spacing:.02em;
+}
+.il-quote span{
+  color:var(--gold-2);position:relative;padding:0 .06em;
+}
+.il-quote span::after{
+  content:"";position:absolute;left:0;right:0;bottom:.06em;height:1px;
+  background:linear-gradient(90deg,rgba(216,178,106,.7),transparent);
+}
+.il-quote small{display:block;margin-top:10px;font-family:var(--sans);font-size:12.5px;
+                letter-spacing:.14em;color:var(--muted);}
+
+/* 计数器 */
+.il-counter{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.il-counter strong{
+  font-family:var(--serif);font-weight:700;font-size:clamp(44px,6vw,74px);line-height:1;
+  font-variant-numeric:tabular-nums;
+  background:linear-gradient(180deg,#fffdf6,#e0b877);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.il-counter .unit{font-family:var(--serif);font-size:clamp(16px,2vw,22px);color:var(--gold);letter-spacing:.1em;}
+.il-counter em{font-style:normal;font-family:ui-monospace,monospace;font-size:11.5px;
+               letter-spacing:.16em;color:var(--muted);width:100%;margin-top:2px;}
+
+/* 30 个月刻度 */
+.il-months{list-style:none;display:grid;grid-template-columns:repeat(30,minmax(0,1fr));
+           gap:3px;align-items:end;height:30px;margin-top:22px;}
+.il-months li{height:12px;background:rgba(244,241,232,.13);transition:height .55s cubic-bezier(.2,.8,.2,1),background .55s;}
+.il-months.in li{height:24px;background:linear-gradient(180deg,var(--gold),rgba(216,178,106,.35));
+                transition-delay:calc(var(--i) * 32ms);}
+.il-months li.now{background:rgba(184,54,47,.55);height:16px;}
+.il-months.in li.now{height:30px;background:linear-gradient(180deg,#e8604f,var(--crimson));transition-delay:1.05s;}
+.il-cap{margin-top:10px;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.18em;color:var(--muted-2);}
+
+/* 技能条 */
+.il-skills{list-style:none;display:grid;gap:11px;margin-top:clamp(20px,3vh,28px);}
+.il-skills li{display:grid;grid-template-columns:3.4em minmax(0,1fr) 3.2em;align-items:center;gap:12px;}
+.il-skills .k{font-family:var(--serif);font-size:15px;letter-spacing:.18em;color:var(--paper);}
+.il-skills .track{position:relative;height:5px;background:rgba(244,241,232,.09);overflow:hidden;}
+.il-skills .track i{display:block;height:100%;width:0;
+                    background:linear-gradient(90deg,var(--orange),var(--gold));
+                    transition:width 1.15s cubic-bezier(.2,.8,.2,1) .15s;}
+.il-skills.in .track i{width:var(--w);}
+.il-skills .v{font-family:ui-monospace,monospace;font-size:11.5px;color:var(--muted);text-align:right;}
+.il-skills .over .track i{background:linear-gradient(90deg,var(--orange),var(--gold-2));
+                          box-shadow:0 0 16px rgba(232,121,31,.6);}
+.il-skills .over .v{color:var(--orange);letter-spacing:.1em;}
+.il-foot{position:relative;z-index:1;margin-top:clamp(30px,5vh,50px);padding-top:18px;
+         border-top:1px solid var(--line-2);font-size:13.5px;color:var(--muted);max-width:62ch;}
+
 /* ══════════ 谢幕 ══════════ */
 .curtain{position:relative;padding:clamp(64px,12vh,120px) 0;border-top:1px solid var(--line);
          background:radial-gradient(760px 420px at 50% 0%,rgba(216,178,106,.10),transparent 68%);text-align:center;}
@@ -289,6 +373,10 @@ footer .row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;m
 @media (max-width:1080px){
   .meme-visual{position:static;width:190px;margin:14px auto 22px;}
   .ball-mark{right:-14%;top:2%;opacity:.75;}
+}
+@media (max-width:900px){
+  .il-grid{grid-template-columns:1fr;gap:32px;}
+  .interlude::before{font-size:52vw;right:-10%;bottom:-10%;opacity:.8;}
 }
 @media (max-width:860px){
   .meta{grid-template-columns:repeat(2,minmax(0,1fr));}

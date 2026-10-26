@@ -222,6 +222,44 @@
       if (memeBall) memeBall.kick(0.05);
     } });
 
+  /* ─────────── 幕间：两年半 ─────────── */
+  (function () {
+    var list = document.getElementById('ilMonths');
+    if (list) {
+      var n = 30, i, li;
+      for (i = 0; i < n; i++) {
+        li = document.createElement('li');
+        li.style.setProperty('--i', i);
+        if (i === n - 1) li.className = 'now';
+        list.appendChild(li);
+      }
+    }
+
+    var days = document.getElementById('ilDays');
+    if (!days) return;
+    var to = parseInt(days.getAttribute('data-to'), 10) || 913;
+    var done = false;
+
+    function run() {
+      if (done) return;
+      done = true;
+      if (reduce) { days.textContent = to; return; }
+      var t0 = performance.now(), dur = 1600;
+      (function step(now) {
+        var p = Math.min(1, (now - t0) / dur);
+        var e = 1 - Math.pow(1 - p, 3);
+        days.textContent = Math.round(to * e);
+        if (p < 1) window.requestAnimationFrame(step);
+      })(t0);
+    }
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (en) { if (en.isIntersecting) run(); });
+      }, { threshold: 0.35 }).observe(days);
+    } else { run(); }
+  })();
+
   /* ─────────── 首屏光斑 ─────────── */
   var hero = document.querySelector('.hero');
   if (!reduce && hero && window.matchMedia('(hover:hover)').matches) {
