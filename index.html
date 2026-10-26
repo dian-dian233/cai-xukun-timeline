@@ -3,520 +3,507 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>蔡徐坤 · 来时路｜一份演出节目单</title>
-<meta name="description" content="把一个人的履历写成一份演出节目单：六场戏，一段来时路；另加一格 three.js 立体道具。" />
-<meta name="theme-color" content="#eceadf" />
+<title>蔡徐坤 · 来时路｜一人六场的演出节目单</title>
+<meta name="description" content="把一个人的履历写成一份演出节目单：试镜、成团、登顶、转折、自述、中场，六场戏，一段来时路。" />
+<meta name="theme-color" content="#0a0a0c" />
+<meta property="og:title" content="蔡徐坤 · 来时路" />
+<meta property="og:description" content="一人六场 · 一份关于舞台与弹幕的演出节目单。" />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0c'/%3E%3Ctext x='16' y='23' font-size='18' font-family='serif' fill='%23d8b26a' text-anchor='middle'%3E来%3C/text%3E%3C/svg%3E" />
 <style>
-  /* ── 纸张与油墨 ───────────────────────────── */
+  /* ══════════════════════════════════════════
+     变量 / 暗场剧场
+     ══════════════════════════════════════════ */
   :root{
-    --paper:#eceadf;
-    --paper-2:#e3e0d3;
-    --ink:#191a1d;
-    --ink-2:#4b4c52;
-    --ink-3:#7c7d83;
-    --stamp:#8e2c34;     /* 剧院红：印章、场次号 */
-    --gilt:#9a7b3f;      /* 烫金：年份、细规线 */
-    --rule:rgba(25,26,29,.14);
-    --maxw:1080px;
+    --ink:#0a0a0c;
+    --ink-2:#0e0e11;
+    --ink-3:#14141a;
+    --paper:#f4f1e8;
+    --paper-2:#cfcbc0;
+    --muted:#8f8b83;
+    --muted-2:#686760;
+    --gold:#d8b26a;
+    --gold-2:#f0dcae;
+    --crimson:#b8362f;
+    --line:rgba(244,241,232,.11);
+    --line-2:rgba(244,241,232,.06);
+    --wrap:1140px;
+    --pad:clamp(20px,5vw,64px);
+    --serif:"Songti SC","Songti TC","Noto Serif CJK SC","Source Han Serif SC",STSong,SimSun,serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{-webkit-text-size-adjust:100%;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
   body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
-    font-size:16.5px;line-height:1.78;
-    /* 极细纸纹 */
-    background-image:
-      radial-gradient(circle at 18% 12%, rgba(255,255,255,.55), transparent 42%),
-      radial-gradient(circle at 82% 78%, rgba(154,123,63,.10), transparent 46%),
-      repeating-linear-gradient(92deg, rgba(25,26,29,.035) 0 1px, transparent 1px 4px);
-    background-attachment:fixed;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.85;
+    letter-spacing:.01em;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
   }
-  .serif{font-family:"Songti SC","Songti TC","Noto Serif CJK SC","Source Han Serif SC",STSong,SimSun,serif;}
+  ::selection{background:rgba(216,178,106,.28);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad);}
+  .mono{
+    font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  }
+  .serif{font-family:var(--serif);}
 
-  /* ── 封面 ────────────────────────────────── */
-  .cover{
-    max-width:var(--maxw);margin:0 auto;padding:clamp(28px,6vw,64px) clamp(20px,5vw,56px) 0;
-    display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(20px,4vw,44px);
-    align-items:start;min-height:92vh;
+  /* 胶片颗粒 */
+  .grain{
+    position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.32;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
   }
-  .rail{display:flex;flex-direction:column;align-items:center;gap:18px;padding-top:6px;}
-  .rab{writing-mode:vertical-rl;font-family:"Songti SC",STSong,SimSun,serif;
-       font-size:clamp(46px,7.6vw,86px);font-weight:600;letter-spacing:.18em;line-height:1.02;
-       border-left:1px solid var(--rule);border-right:1px solid var(--rule);padding:0 14px;}
-  .rab small{font-size:.34em;letter-spacing:.5em;color:var(--ink-3);display:block;margin-top:.6em;}
+  /* 阅读进度 */
+  .progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:70;background:transparent;}
+  .progress i{
+    display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;
+    background:linear-gradient(90deg,var(--crimson),var(--gold) 55%,var(--gold-2));
+  }
+
+  /* ══════════════════════════════════════════
+     首屏
+     ══════════════════════════════════════════ */
+  .hero{
+    position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding-top:clamp(28px,6vh,64px);padding-bottom:clamp(28px,6vh,56px);
+    overflow:hidden;
+    --mx:50%;--my:38%;
+    background:
+      radial-gradient(680px 520px at var(--mx) var(--my), rgba(216,178,106,.15), transparent 62%),
+      radial-gradient(900px 600px at 82% 8%, rgba(184,54,47,.10), transparent 60%),
+      linear-gradient(180deg,#0d0d11,#0a0a0c 62%,#08080a);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:38%;
+    background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));
+    pointer-events:none;
+  }
+  .topbar{
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    padding-bottom:14px;border-bottom:1px solid var(--line);position:relative;z-index:2;
+  }
+  .hero-main{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(16px,4vw,48px);
+    align-items:start;padding:clamp(36px,7vh,76px) 0 clamp(26px,4vh,40px);position:relative;z-index:2;
+  }
+  .eyebrow{
+    font-family:var(--serif);font-size:13px;letter-spacing:.34em;color:var(--gold);
+    display:flex;align-items:center;gap:14px;
+  }
+  .eyebrow::after{content:"";height:1px;flex:1;max-width:110px;background:linear-gradient(90deg,var(--gold),transparent);}
+  .display{
+    position:relative;
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(56px,12.5vw,150px);line-height:1.02;letter-spacing:.05em;
+    margin:.1em 0 .12em -.04em;
+    background:linear-gradient(178deg,#fffdf6 12%,#f0e6cd 46%,#c9b48a 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .display .wm{display:none;}
+  .deck{
+    max-width:46ch;color:var(--paper-2);font-size:clamp(15px,1.5vw,17px);line-height:1.95;
+    padding-left:14px;border-left:2px solid rgba(216,178,106,.5);
+  }
+  .hero-side{display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:6px;}
+  .vtitle{
+    writing-mode:vertical-rl;font-family:var(--serif);font-weight:600;
+    font-size:clamp(30px,4.4vw,56px);letter-spacing:.34em;line-height:1;
+    padding:18px 8px;color:rgba(244,241,232,.9);
+    border-left:1px solid var(--line);border-right:1px solid var(--line);
+  }
   .stamp{
-    --r:-9deg;
-    display:inline-block;transform:rotate(var(--r));
-    border:2px solid var(--stamp);color:var(--stamp);
-    font-family:"Songti SC",STSong,serif;font-weight:700;
-    padding:5px 10px 6px;border-radius:3px;letter-spacing:.24em;font-size:13px;
-    box-shadow:inset 0 0 0 1px rgba(142,44,52,.28);
-    opacity:0;animation:press .5s cubic-bezier(.2,.8,.2,1) .55s forwards;
+    display:inline-block;transform:rotate(-8deg);
+    border:1.5px solid rgba(184,54,47,.85);color:#d9605a;
+    font-family:var(--serif);font-weight:700;font-size:12.5px;letter-spacing:.26em;
+    padding:5px 9px 6px;border-radius:2px;
+    box-shadow:inset 0 0 0 1px rgba(184,54,47,.25);
+    opacity:0;animation:press .6s cubic-bezier(.2,.8,.2,1) .9s forwards;
   }
-  @keyframes press{from{opacity:0;transform:rotate(var(--r)) scale(1.6)}to{opacity:.92;transform:rotate(var(--r)) scale(1)}}
+  @keyframes press{from{opacity:0;transform:rotate(-8deg) scale(1.7)}to{opacity:1;transform:rotate(-8deg) scale(1)}}
 
-  .bill{padding-top:4px;}
-  .kicker{font-family:"Songti SC",STSong,serif;font-size:13.5px;color:var(--ink-3);letter-spacing:.16em;}
-  h1{margin:.34em 0 .18em;font-size:clamp(30px,4.4vw,46px);line-height:1.22;font-weight:700;
-     font-family:"Songti SC",STSong,SimSun,serif;letter-spacing:.02em;}
-  .deck{color:var(--ink-2);max-width:44ch;font-size:17px;}
-  .meta{margin-top:28px;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);}
-  .meta dl{display:grid;grid-template-columns:auto 1fr;gap:0;}
-  .meta dt,.meta dd{padding:9px 0;border-top:1px solid var(--rule);font-size:14.5px;}
-  .meta dt{color:var(--ink-3);padding-right:22px;white-space:nowrap;letter-spacing:.06em;}
-  .meta dd{color:var(--ink);}
-  .meta dl > :nth-child(1),.meta dl > :nth-child(2){border-top:none;}
+  .meta{
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;z-index:2;
+  }
+  .meta div{padding:16px 18px 18px 0;}
+  .meta div + div{padding-left:22px;border-left:1px solid var(--line-2);}
+  .meta dt{font-size:11.5px;letter-spacing:.2em;color:var(--muted);margin-bottom:6px;}
+  .meta dd{font-family:var(--serif);font-size:15.5px;color:var(--paper);letter-spacing:.02em;}
+  .scroll{
+    display:inline-flex;align-items:center;gap:12px;margin-top:clamp(24px,4vh,38px);
+    font-size:12px;letter-spacing:.24em;color:var(--muted);position:relative;z-index:2;
+    transition:color .3s;
+  }
+  .scroll:hover{color:var(--gold);}
+  .scroll i{display:block;width:56px;height:1px;background:var(--muted);position:relative;overflow:hidden;}
+  .scroll i::after{
+    content:"";position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);
+    animation:sweep 2.4s ease-in-out infinite;
+  }
+  @keyframes sweep{0%{transform:translateX(-100%)}55%{transform:translateX(0)}100%{transform:translateX(100%)}}
 
-  .toc{margin-top:26px;font-size:14.5px;}
-  .toc ol{list-style:none;counter-reset:s;}
-  .toc li{counter-increment:s;display:grid;grid-template-columns:2.6em 1fr auto;gap:.7em;
-          padding:7px 0;border-bottom:1px dotted var(--rule);color:var(--ink-2);}
-  .toc li::before{content:counter(s);color:var(--stamp);font-family:"Songti SC",STSong,serif;font-weight:700;}
-  .toc .yr{color:var(--gilt);font-size:13.5px;letter-spacing:.06em;}
+  /* ══════════════════════════════════════════
+     目录
+     ══════════════════════════════════════════ */
+  .index{padding:clamp(56px,10vh,104px) 0 clamp(20px,4vh,36px);}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;
+            padding-bottom:18px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .sec-title{font-family:var(--serif);font-size:clamp(22px,3vw,30px);letter-spacing:.16em;font-weight:600;}
+  .sec-title span{margin-left:12px;font-family:ui-monospace,monospace;font-size:11px;
+                  letter-spacing:.24em;color:var(--muted);vertical-align:middle;}
+  .toc{list-style:none;counter-reset:t;}
+  .toc a{
+    display:grid;grid-template-columns:3.4em minmax(0,1fr) auto;align-items:baseline;gap:16px;
+    padding:17px 12px;border-bottom:1px solid var(--line-2);
+    position:relative;z-index:0;transition:padding-left .35s cubic-bezier(.2,.8,.2,1),color .3s;
+  }
+  .toc a::before{
+    content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .35s;
+    background:linear-gradient(90deg,rgba(216,178,106,.14),rgba(216,178,106,.02) 60%,transparent);
+  }
+  .toc a:hover,.toc a:focus-visible{padding-left:22px;color:#fff;outline:none;}
+  .toc a:hover::before,.toc a:focus-visible::before{opacity:1;}
+  .toc a:hover .n{color:var(--gold-2);}
+  .toc .n{font-family:ui-monospace,monospace;font-size:12.5px;letter-spacing:.14em;color:var(--gold);transition:color .3s;}
+  .toc .t{font-family:var(--serif);font-size:clamp(16px,2vw,20px);letter-spacing:.04em;color:var(--paper);}
+  .toc .y{font-family:ui-monospace,monospace;font-size:12.5px;letter-spacing:.12em;color:var(--muted);white-space:nowrap;}
 
-  /* ── 正文：场次 ──────────────────────────── */
-  main{max-width:var(--maxw);margin:0 auto;padding:clamp(40px,7vw,80px) clamp(20px,5vw,56px) 0;}
+  /* ══════════════════════════════════════════
+     正文：场次
+     ══════════════════════════════════════════ */
+  .acts{padding-bottom:clamp(40px,8vh,80px);}
   .act{
-    display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(20px,4vw,44px);
-    padding:clamp(30px,5vw,52px) 0;border-top:1px solid var(--ink);
+    display:grid;grid-template-columns:clamp(96px,13vw,168px) minmax(0,1fr);
+    gap:clamp(18px,4vw,52px);
+    padding:clamp(36px,6vh,64px) 0;
+    border-top:1px solid var(--line);
   }
-  .act .side{padding-top:4px;}
-  .act .no{font-family:"Songti SC",STSong,serif;color:var(--stamp);font-size:15px;letter-spacing:.3em;}
-  .act .yr{display:block;margin-top:.5em;font-family:"Songti SC",STSong,serif;
-           font-size:clamp(22px,3vw,30px);color:var(--gilt);letter-spacing:.04em;}
-  .act h2{font-size:clamp(22px,3.2vw,31px);line-height:1.34;font-weight:700;
-          font-family:"Songti SC",STSong,SimSun,serif;letter-spacing:.01em;}
-  .act p{margin-top:.85em;color:var(--ink-2);max-width:62ch;}
-  .line{
-    margin-top:1.15em;padding:14px 0 14px 18px;border-left:3px solid var(--stamp);
-    font-family:"Kaiti SC",STKaiti,KaiTi,"Songti SC",serif;font-size:18px;color:var(--ink);
-    max-width:52ch;
+  .act:first-child{border-top:none;}
+  .aside{position:sticky;top:88px;align-self:start;display:flex;flex-direction:column;gap:10px;}
+  .aside .num{
+    font-family:var(--serif);font-size:clamp(46px,6.6vw,84px);line-height:.9;font-weight:700;
+    color:transparent;-webkit-text-stroke:1px rgba(216,178,106,.55);letter-spacing:.02em;
+    transition:-webkit-text-stroke .4s,color .4s;
   }
-  .line span{display:block;margin-top:.4em;font-family:"PingFang SC",sans-serif;font-size:13px;color:var(--ink-3);font-style:normal;}
-  .note{
-    margin-top:22px;padding:14px 16px;background:var(--paper-2);border:1px solid var(--rule);
-    font-size:14px;color:var(--ink-3);max-width:62ch;
+  .act:hover .aside .num{color:rgba(216,178,106,.1);-webkit-text-stroke:1px rgba(216,178,106,.85);}
+  .aside .yr{font-family:ui-monospace,monospace;font-size:12.5px;letter-spacing:.16em;color:var(--gold);}
+  .aside .tag{font-family:var(--serif);font-size:12.5px;letter-spacing:.3em;color:var(--muted);}
+  .body{border-left:1px solid var(--line);padding-left:clamp(16px,2.6vw,30px);position:relative;}
+  .body::before{
+    content:"";position:absolute;left:-4px;top:12px;width:7px;height:7px;border-radius:50%;
+    background:var(--gold);box-shadow:0 0 0 4px rgba(216,178,106,.12);
+  }
+  .body h2{
+    font-family:var(--serif);font-weight:700;font-size:clamp(21px,3.2vw,32px);line-height:1.42;
+    letter-spacing:.015em;margin-bottom:.7em;
+  }
+  .body p{color:var(--paper-2);max-width:60ch;margin-bottom:.95em;}
+  .body p:last-child{margin-bottom:0;}
+  .body .cue{
+    margin-top:20px;padding:16px 18px;max-width:56ch;
+    border-left:2px solid var(--crimson);background:linear-gradient(90deg,rgba(184,54,47,.10),transparent 78%);
+    font-family:var(--serif);font-size:15.5px;color:#efe7d7;line-height:1.85;
+  }
+  .body .cue b{display:block;font-family:var(--sans);font-weight:600;font-size:11px;
+               letter-spacing:.24em;color:#d9605a;margin-bottom:4px;}
+  .body .aside-note{
+    margin-top:20px;font-size:13.5px;color:var(--muted);max-width:56ch;
+    padding-top:14px;border-top:1px dotted rgba(244,241,232,.18);
   }
 
-  /* ── 谢幕 ────────────────────────────────── */
-  .curtain{max-width:var(--maxw);margin:0 auto;padding:clamp(48px,8vw,96px) clamp(20px,5vw,56px) 0;
-           border-top:1px solid var(--ink);}
-  .curtain h2{font-family:"Songti SC",STSong,serif;font-size:clamp(26px,4vw,40px);line-height:1.3;
-              max-width:30ch;letter-spacing:.01em;}
-  .curtain p{margin-top:1em;color:var(--ink-2);max-width:60ch;}
-  .colophon{max-width:var(--maxw);margin:clamp(44px,7vw,84px) auto 0;
-            padding:22px clamp(20px,5vw,56px) 80px;border-top:1px solid var(--rule);
-            font-size:13px;color:var(--ink-3);line-height:1.9;}
-  .colophon a{color:var(--stamp);text-decoration:none;border-bottom:1px solid rgba(142,44,52,.35);}
-  .colophon a:focus-visible,.toc li:focus-visible{outline:2px solid var(--stamp);outline-offset:3px;}
+  /* 第四场：玩梗专场 */
+  .act--meme .body{
+    border-left-color:rgba(184,54,47,.45);
+  }
+  .act--meme .body::before{background:var(--crimson);box-shadow:0 0 0 4px rgba(184,54,47,.16);}
+  .meme-line{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;
+    margin:22px 0 4px;font-family:var(--serif);letter-spacing:.06em;
+  }
+  .meme-line .a{
+    font-size:clamp(26px,4.6vw,46px);font-weight:700;color:#f3e9d4;
+    text-shadow:0 0 36px rgba(184,54,47,.45);
+  }
+  .meme-line .arrow{color:var(--muted-2);font-size:14px;letter-spacing:.3em;}
+  .meme-line .b{
+    font-size:clamp(26px,4.6vw,46px);font-weight:700;
+    background:linear-gradient(100deg,#ff8a72,#d8b26a);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
 
-  /* 入场：整页一次，不逐块弹跳 */
-  .rise{opacity:0;transform:translateY(14px);animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards;}
-  @keyframes rise{to{opacity:1;transform:none}}
-  .d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.3s}
+  /* ══════════════════════════════════════════
+     谢幕
+     ══════════════════════════════════════════ */
+  .curtain{
+    position:relative;padding:clamp(64px,12vh,120px) 0;border-top:1px solid var(--line);
+    background:radial-gradient(760px 420px at 50% 0%,rgba(216,178,106,.10),transparent 68%);
+    text-align:center;
+  }
+  .curtain .kicker{font-family:ui-monospace,monospace;font-size:11.5px;letter-spacing:.3em;color:var(--gold);}
+  .curtain h2{
+    font-family:var(--serif);font-weight:700;font-size:clamp(25px,4.4vw,46px);line-height:1.35;
+    letter-spacing:.02em;margin:18px auto .5em;max-width:22ch;
+    background:linear-gradient(180deg,#fffdf6,#d8c9a6 75%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .curtain p{color:var(--paper-2);max-width:56ch;margin:0 auto .8em;font-size:15.5px;}
+  .curtain .fin{margin-top:34px;font-family:var(--serif);font-size:13px;letter-spacing:.5em;color:var(--muted);}
+  .curtain .fin::before,.curtain .fin::after{content:"·";margin:0 .9em;color:var(--gold);}
 
+  footer.colophon{
+    padding:26px 0 64px;border-top:1px solid var(--line-2);
+    font-size:12.5px;line-height:2;color:var(--muted-2);
+  }
+  footer.colophon a{color:var(--gold);border-bottom:1px solid rgba(216,178,106,.3);transition:color .3s;}
+  footer.colophon a:hover{color:var(--gold-2);}
+  footer .row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:14px;}
+
+  /* ══════════════════════════════════════════
+     入场
+     ══════════════════════════════════════════ */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .hero .reveal{transition-delay:.05s;}
+
+  /* ══════════════════════════════════════════
+     自适应
+     ══════════════════════════════════════════ */
+  @media (max-width:860px){
+    .meta{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .meta div:nth-child(3){border-left:none;padding-left:0;}
+    .meta div:nth-child(n+3){border-top:1px solid var(--line-2);}
+  }
   @media (max-width:720px){
-    .cover,.act{grid-template-columns:1fr;}
-    .rail{flex-direction:row;align-items:flex-end;justify-content:space-between;}
-    .rab{writing-mode:horizontal-tb;border:none;padding:0;letter-spacing:.06em;}
-    .rab small{display:none;}
-    .act .side{display:flex;align-items:baseline;gap:14px;}
-    .act .yr{margin-top:0;}
-    body{font-size:16px;}
+    body{font-size:15.5px;}
+    .hero{min-height:auto;padding-top:96px;}
+    .hero-main{grid-template-columns:1fr;gap:26px;padding-top:34px;}
+    .hero-side{flex-direction:row;align-items:center;justify-content:space-between;order:-1;}
+    .vtitle{writing-mode:horizontal-tb;border:none;padding:0;font-size:30px;letter-spacing:.2em;}
+    .act{grid-template-columns:1fr;gap:14px;}
+    .aside{position:static;flex-direction:row;align-items:baseline;gap:14px;}
+    .aside .num{font-size:40px;}
+    .body{padding-left:16px;}
+    .toc a{grid-template-columns:2.2em minmax(0,1fr) auto;gap:10px;padding:15px 6px;}
+    .toc .y{grid-column:auto;font-size:11px;}
+    .sec-head .mono{font-size:10.5px;}
+    .meme-line{flex-direction:column;align-items:flex-start;gap:6px;}
+    .meme-line .arrow{font-size:11px;letter-spacing:.2em;}
   }
   @media (prefers-reduced-motion:reduce){
-    .rise,.stamp{animation:none;opacity:1;transform:none;}
-  }
-
-  /* ── 序幕：立体道具（three.js） ───────────── */
-  .prologue{max-width:var(--maxw);margin:0 auto;padding:clamp(38px,6vw,74px) clamp(20px,5vw,56px) 0;}
-  .prologue .kicker{font-family:"Songti SC",STSong,serif;font-size:13.5px;color:var(--ink-3);letter-spacing:.16em;}
-  .prologue h2{margin:.3em 0 .5em;font-size:clamp(22px,3.2vw,31px);line-height:1.34;font-weight:700;
-    font-family:"Songti SC",STSong,SimSun,serif;letter-spacing:.01em;}
-  .pro-deck{color:var(--ink-2);max-width:58ch;font-size:16.5px;}
-  .stage{
-    position:relative;margin:clamp(18px,3vw,30px) 0 0;border:1px solid var(--ink);overflow:hidden;
-    background:radial-gradient(circle at 50% 40%, #f6f4ea 0%, var(--paper-2) 56%, #d7d3c3 100%);
-    aspect-ratio:16/9;touch-action:none;
-  }
-  .stage::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;mix-blend-mode:multiply;
-    background-image:repeating-linear-gradient(92deg, rgba(25,26,29,.05) 0 1px, transparent 1px 4px);}
-  #stage-canvas{display:block;width:100%;height:100%;cursor:grab;}
-  #stage-canvas.dragging{cursor:grabbing;}
-  .stage-fallback{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:24px;
-    font-family:"Songti SC",STSong,serif;font-size:14px;color:var(--ink-3);letter-spacing:.06em;line-height:1.9;}
-  .stage-fallback.on{display:grid;}
-  .stage-fallback b{display:block;font-size:clamp(38px,11vw,76px);color:var(--stamp);line-height:1;margin-bottom:12px;}
-  .stage-cap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:10px;
-    font-family:"Songti SC",STSong,serif;font-size:12.5px;color:var(--ink-3);letter-spacing:.08em;}
-  .props{margin-top:clamp(20px,3vw,30px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.4vw,26px);}
-  .prop{border-top:1px solid var(--ink);padding-top:12px;}
-  .prop b{display:block;font-family:"Songti SC",STSong,serif;font-size:15px;letter-spacing:.12em;color:var(--stamp);}
-  .prop span{display:block;margin-top:6px;font-size:14px;color:var(--ink-3);line-height:1.72;}
-  @media (max-width:720px){
-    .stage{aspect-ratio:4/3;}
-    .props{grid-template-columns:1fr;}
+    html{scroll-behavior:auto;}
+    .reveal,.stamp{opacity:1!important;transform:none!important;transition:none!important;animation:none!important;}
+    .scroll i::after{animation:none;}
   }
 </style>
 </head>
 <body>
 
-<header class="cover">
-  <div class="rail rise d1">
-    <div class="rab serif">来时路<small>CAST · 2012—</small></div>
-    <div class="stamp">全本上演</div>
-  </div>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><i id="bar"></i></div>
 
-  <div class="bill">
-    <p class="kicker rise d2">演出节目单 / 一人六场</p>
-    <h1 class="rise d2">蔡徐坤</h1>
-    <p class="deck rise d3">把一个人的履历，按舞台分场来读：试镜、出道、C 位、玩梗、风波，再到还没演完的下一幕。</p>
-
-    <div class="meta rise d3">
-      <dl>
-        <dt>主演</dt><dd>蔡徐坤</dd>
-        <dt>首演</dt><dd>2012 年，一档少年选秀</dd>
-        <dt>场次</dt><dd>六场，另有一场未排期</dd>
-        <dt>演出地点</dt><dd>舞台、直播间，以及整个中文互联网</dd>
-        <dt>时长</dt><dd>至今</dd>
-      </dl>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="topbar">
+      <span class="mono">Cast · 2012 —</span>
+      <span class="mono">Playbill / 一人六场</span>
     </div>
 
-    <nav class="toc rise d3" aria-label="目录">
-      <ol>
-        <li><span>试镜：一个少年被镜头看见</span><span class="yr">2012</span></li>
-        <li><span>成团：第一次学会做艺人</span><span class="yr">2015</span></li>
-        <li><span>登顶：C 位与顶流</span><span class="yr">2018 · 春</span></li>
-        <li><span>转折：一支篮球视频</span><span class="yr">2018 · 夏</span></li>
-        <li><span>自述：从被评判到评判</span><span class="yr">2019—2020</span></li>
-        <li><span>中场：风波与安静</span><span class="yr">2023</span></li>
-      </ol>
-    </nav>
+    <div class="hero-main">
+      <div>
+        <p class="eyebrow reveal">演出节目单</p>
+        <h1 class="display reveal">蔡徐坤</h1>
+        <p class="deck reveal">把一个人的履历，按舞台分场来读：试镜、成团、登顶、玩梗、自述，还有一场至今没排完的中场。</p>
+      </div>
+      <div class="hero-side">
+        <span class="vtitle serif">来时路</span>
+        <span class="stamp">全本上演</span>
+      </div>
+    </div>
+
+    <dl class="meta reveal">
+      <div><dt>主演</dt><dd>蔡徐坤</dd></div>
+      <div><dt>首演</dt><dd>2012 · 少年选秀</dd></div>
+      <div><dt>场次</dt><dd>六场，一场未排期</dd></div>
+      <div><dt>地点</dt><dd>舞台与整个互联网</dd></div>
+    </dl>
+
+    <a class="scroll" href="#index">向下 · 开幕<i aria-hidden="true"></i></a>
   </div>
 </header>
 
-<section class="prologue" aria-labelledby="prologue-h">
-  <p class="kicker">序幕 / PROLOGUE</p>
-  <h2 id="prologue-h" class="serif">三件道具，一句台词</h2>
-  <p class="pro-deck">球、中分、背带裤。在台上它们只是道具，进了弹幕就成了梗。这一格是立体的，按住拖一拖，可以转到背面去看。</p>
-
-  <figure class="stage" style="margin-left:0;margin-right:0;">
-    <canvas id="stage-canvas" aria-label="三件道具的立体模型：篮球、中分发型、背带裤"></canvas>
-    <div class="stage-fallback" id="stage-fallback"><div><b>🏀</b>这台设备放不出立体舞台<br />那就当道具箱先合上，文字版照样能看</div></div>
-  </figure>
-  <figcaption class="stage-cap"><span>① 篮球 · ② 中分 · ③ 背带裤</span><span>拖动旋转 · 滚轮缩放 · 松手会自己转回去</span></figcaption>
-
-  <div class="props">
-    <div class="prop"><b>篮球</b><span>第四场那支视频的道具。本来是代言花絮，后来成了一个动作的总称。</span></div>
-    <div class="prop"><b>中分</b><span>最便宜的角色设定：往两边一分，人就出场了，连字幕都省。</span></div>
-    <div class="prop"><b>背带裤</b><span>两根带子，一条裤。舞台装里最不挑人的一件，也最容易被画成简笔画。</span></div>
+<section class="index" id="index">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">目录<span>INDEX</span></h2>
+      <span class="mono">Six Acts · 2012 → 2023</span>
+    </div>
+    <ol class="toc">
+      <li><a href="#act-1"><span class="n">01</span><span class="t">试镜：一个少年被镜头看见</span><span class="y">2012</span></a></li>
+      <li><a href="#act-2"><span class="n">02</span><span class="t">成团：第一次学会做艺人</span><span class="y">2015</span></a></li>
+      <li><a href="#act-3"><span class="n">03</span><span class="t">登顶：C 位与顶流</span><span class="y">2018 · 春</span></a></li>
+      <li><a href="#act-4"><span class="n">04</span><span class="t">转折：一支篮球视频</span><span class="y">2018 · 夏</span></a></li>
+      <li><a href="#act-5"><span class="n">05</span><span class="t">自述：从被评判到评判</span><span class="y">2019 — 2020</span></a></li>
+      <li><a href="#act-6"><span class="n">06</span><span class="t">中场：风波与安静</span><span class="y">2023</span></a></li>
+    </ol>
   </div>
 </section>
 
+<main class="acts wrap">
 
-<main>
-
-  <section class="act">
-    <div class="side"><span class="no serif">第一场</span><span class="yr serif">2012</span></div>
-    <div>
-      <h2>试镜：一个少年被镜头看见</h2>
-      <p>成绩不算亮眼，镜头也没多分几秒。但那是他第一次站在真正的灯光下，也是第一次明白——这个行业先把人挑一遍，再决定给不给你台词。</p>
-      <div class="line">“那时候只是想去试试。”<span>—— 关于这段经历，他后来讲得很轻</span></div>
+  <article class="act" id="act-1">
+    <div class="aside">
+      <span class="num serif" aria-hidden="true">01</span>
+      <span class="yr">2012</span>
+      <span class="tag serif">第一场</span>
     </div>
-  </section>
-
-  <section class="act">
-    <div class="side"><span class="no serif">第二场</span><span class="yr serif">2015</span></div>
-    <div>
-      <h2>成团：第一次学会做艺人</h2>
-      <p>通过《星动亚洲》出道，成为组合成员。训练、通告、镜头前的分寸、镜头后的空档——所谓“艺人”两个字的分量，是从这里开始背上的。</p>
-      <p>这段日子不怎么被提起，但它决定了后面所有的台风：他是从团体里长出来的那种表演者。</p>
+    <div class="body">
+      <h2 class="reveal">试镜：一个少年被镜头看见</h2>
+      <p class="reveal">成绩不算亮眼，镜头也没多分几秒。但那是他第一次站在真正的灯光下，也是第一次明白——这个行业先把人挑一遍，再决定给不给你台词。</p>
+      <div class="cue reveal"><b>舞台提示</b>关于这段经历，他后来讲得很轻。几乎每个偶像的履历里都有这样一场戏：没有成绩，只有资格。</div>
     </div>
-  </section>
+  </article>
 
-  <section class="act">
-    <div class="side"><span class="no serif">第三场</span><span class="yr serif">2018 · 春</span></div>
-    <div>
-      <h2>登顶：C 位与顶流</h2>
-      <p>《偶像练习生》决赛夜票数断层第一，以 C 位出道，并成为限定团 NINE PERCENT 的队长。那一年，“顶流”这个词几乎是围着他被发明出来的。</p>
-      <div class="line">“他站在中间，是观众一票一票投出来的。”<span>—— 那一季的选拔逻辑，本身就是节目最大的叙事</span></div>
+  <article class="act" id="act-2">
+    <div class="aside">
+      <span class="num serif" aria-hidden="true">02</span>
+      <span class="yr">2015</span>
+      <span class="tag serif">第二场</span>
     </div>
-  </section>
+    <div class="body">
+      <h2 class="reveal">成团：第一次学会做艺人</h2>
+      <p class="reveal">通过《星动亚洲》被更多人记住，随后进入组合，成为男团成员。训练、通告、镜头前的分寸、镜头后的空档——所谓“艺人”两个字的重量，是从这里开始背上的。</p>
+      <p class="reveal">这段日子不怎么被提起，却决定了后面所有的台风：他是从团体里长出来的那种表演者，先学会配合，再学会站出来。</p>
+      <p class="aside-note reveal">冷知识：后来被反复剪进鬼畜的那句歌词，出自由他参与的作品；而在玩梗之前，它只是专辑里一首普通的主打。</p>
+    </div>
+  </article>
 
-  <section class="act">
-    <div class="side"><span class="no serif">第四场</span><span class="yr serif">2018 · 夏</span></div>
-    <div>
-      <h2>转折：一支篮球视频</h2>
-      <p>代言花絮里的一段篮球表演，被拆成帧、配上音乐、剪成上万个版本。“鸡你太美”从一个谐音耳朵听错的东西，变成了一句全民口头禅——原词其实写的是“只因你太美”。</p>
-      <p>从此他活在了弹幕里。喜欢他的人、不认识他的人、纯粹来玩梗的人，在同一个梗里相遇。一个偶像的公众形象，第一次不是由作品、也不是由他自己决定的。</p>
-      <div class="note">这一场没有台词，只有评论。它是整份节目单里最长的一幕，也最难落幕。</div>
+  <article class="act" id="act-3">
+    <div class="aside">
+      <span class="num serif" aria-hidden="true">03</span>
+      <span class="yr">2018 · 春</span>
+      <span class="tag serif">第三场</span>
     </div>
-  </section>
+    <div class="body">
+      <h2 class="reveal">登顶：C 位与顶流</h2>
+      <p class="reveal">《偶像练习生》决赛夜票数断层第一，以 C 位出道，并成为限定团 NINE PERCENT 的队长。那一年，“顶流”这个词几乎是围着他被发明出来的。</p>
+      <div class="cue reveal"><b>舞台提示</b>他站在中间，是观众一票一票投出来的。这一季选拔的逻辑，本身就是节目最大的叙事——票数即剧本。</div>
+    </div>
+  </article>
 
-  <section class="act">
-    <div class="side"><span class="no serif">第五场</span><span class="yr serif">2019—2020</span></div>
-    <div>
-      <h2>自述：从被评判到评判</h2>
-      <p>团体活动收束，他开始用个人作品说话，编舞与制作的参与度越来越高。2020 年，他坐在《青春有你 2》制作人代表的位子上——从被投票的人，变成打分的人。</p>
-      <div class="line">“舞台是我唯一确定的事。”<span>—— 他在节目里反复说的，大概也是唯一没被梗覆盖的一句话</span></div>
+  <article class="act act--meme" id="act-4">
+    <div class="aside">
+      <span class="num serif" aria-hidden="true">04</span>
+      <span class="yr">2018 · 夏</span>
+      <span class="tag serif">第四场</span>
     </div>
-  </section>
+    <div class="body">
+      <h2 class="reveal">转折：一支篮球视频</h2>
+      <p class="reveal">代言花絮里的一段篮球表演，被拆成帧、配上音乐、剪成上万个版本。一个谐音被耳朵听错，从此变成全民口头禅。</p>
+      <div class="meme-line reveal">
+        <span class="a serif">只因你太美</span>
+        <span class="arrow" aria-hidden="true">→ 听错 →</span>
+        <span class="b serif">鸡你太美</span>
+      </div>
+      <p class="reveal">从此他活在了弹幕里。喜欢他的人、不认识他的人、纯粹来玩梗的人，在同一个梗里相遇。一个偶像的公众形象，第一次既不是由作品、也不是由他自己决定的。</p>
+      <div class="cue reveal"><b>舞台提示</b>这一场没有台词，只有评论。它是整份节目单里最长的一幕，也最难落幕。</div>
+    </div>
+  </article>
 
-  <section class="act">
-    <div class="side"><span class="no serif">第六场</span><span class="yr serif">2023</span></div>
-    <div>
-      <h2>中场：风波与安静</h2>
-      <p>一场私生活风波把他推到舆论中心，商业合作与公开活动一度收缩。剧场灯暗下来的时候，没有人能替他演出这一段。</p>
-      <p>这是他“来时路”上最沉的一块石头，也是公众人物必须自己走过去的部分。</p>
+  <article class="act" id="act-5">
+    <div class="aside">
+      <span class="num serif" aria-hidden="true">05</span>
+      <span class="yr">2019 — 2020</span>
+      <span class="tag serif">第五场</span>
     </div>
-  </section>
+    <div class="body">
+      <h2 class="reveal">自述：从被评判到评判</h2>
+      <p class="reveal">团体活动收束，他开始用个人作品说话，编舞与制作的参与度越来越高。2020 年，他坐在《青春有你 2》制作人代表的位子上——从被投票的人，变成打分的人。</p>
+      <div class="cue reveal"><b>舞台提示</b>他在节目里反复强调的是舞台。那大概是唯一没被梗覆盖的一句话。</div>
+    </div>
+  </article>
+
+  <article class="act" id="act-6">
+    <div class="aside">
+      <span class="num serif" aria-hidden="true">06</span>
+      <span class="yr">2023</span>
+      <span class="tag serif">第六场</span>
+    </div>
+    <div class="body">
+      <h2 class="reveal">中场：风波与安静</h2>
+      <p class="reveal">一场私生活风波把他推到舆论中心，商业合作与公开活动一度收缩。剧场灯暗下来的时候，没有人能替他演出这一段。</p>
+      <p class="reveal">这是他“来时路”上最沉的一块石头，也是公众人物必须自己走过去的部分。节目单在这里停住，不是省略，而是留白。</p>
+    </div>
+  </article>
 
 </main>
 
 <section class="curtain">
-  <h2 class="serif">谢幕之后，还有一场没排期</h2>
-  <p>一个人被玩梗，最后会被梗吞掉，还是被梗成全？答案不在弹幕里，而在他还能不能重新站上舞台、并且拿得出东西。</p>
-  <p>这份节目单到 2023 年就停了，因为后面的戏还没排完。</p>
+  <div class="wrap">
+    <p class="kicker reveal">CURTAIN CALL</p>
+    <h2 class="reveal">谢幕之后，还有一场没排期</h2>
+    <p class="reveal">一个人被玩梗，最后会被梗吞掉，还是被梗成全？答案不在弹幕里，而在他还能不能重新站上舞台、并且拿得出东西。</p>
+    <p class="reveal">这份节目单到 2023 年就停了，因为后面的戏还没排完。</p>
+    <p class="fin">全本终</p>
+  </div>
 </section>
 
 <footer class="colophon">
-  本站是一份粉丝向的<b>迷因 · 时间轴</b>单页，内容只取自公开报道与公开舞台信息，不含未经证实的指控与评价；若与官方说法有出入，以官方为准。<br />
-  文字、版式与代码由 <a href="https://github.com/dian-dian233" rel="noopener">点点</a> 制作 · 源码在 <a href="https://github.com/dian-dian233/cai-xukun-timeline" rel="noopener">GitHub</a> · 一言不合就重排一版 · v3 加了一层 three.js 立体舞台 🏀
+  <div class="wrap">
+    本站是一份粉丝向的<b>迷因 · 时间轴</b>单页，内容只取自公开报道与公开舞台信息，不含未经证实的指控与评价；若与官方说法有出入，以官方为准。
+    <div class="row">
+      <span>文字、版式与代码由 <a href="https://github.com/dian-dian233" rel="noopener">点点</a> 制作</span>
+      <span>源码在 <a href="https://github.com/dian-dian233/cai-xukun-timeline" rel="noopener">GitHub</a> · 一言不合就重排一版</span>
+    </div>
+  </div>
 </footer>
 
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-<script type="module">
-(() => {
-  const cv = document.getElementById('stage-canvas');
-  const stage = cv.parentElement;
-  const fb = document.getElementById('stage-fallback');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const fail = () => { fb.classList.add('on'); cv.style.display = 'none'; };
+  /* 首屏光斑跟随指针 */
+  var hero = document.querySelector('.hero');
+  if (!reduce && hero && window.matchMedia('(hover:hover)').matches) {
+    hero.addEventListener('pointermove', function(e){
+      var r = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+      hero.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+    }, {passive:true});
+  }
 
-  const probe = document.createElement('canvas');
-  if (!(probe.getContext('webgl2') || probe.getContext('webgl'))) { fail(); return; }
-
-  const CDNS = [
-    'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js',
-    'https://unpkg.com/three@0.160.0/build/three.module.js',
-    'https://esm.sh/three@0.160.0'
-  ];
-
-  (async () => {
-    let THREE = null;
-    for (const url of CDNS) {
-      try { THREE = await import(url); break; } catch (err) { /* 换个源再试 */ }
-    }
-    if (!THREE) { fail(); return; }
-
-    let renderer = null;
-    try {
-      renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true });
-    } catch (err) { fail(); return; }
-
-    const PAPER = 0xeceadf;
-    const INK = 0x1b1c1f;
-    const GILT = 0x9a7b3f;
-
-    const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(PAPER, 10, 19);
-
-    const camera = new THREE.PerspectiveCamera(34, 16 / 9, 0.1, 60);
-    camera.position.set(0, 0.4, 8.4);
-
-    scene.add(new THREE.HemisphereLight(0xfffaf0, 0x8b8676, 1.0));
-    const key = new THREE.DirectionalLight(0xfff6e6, 1.25);
-    key.position.set(3.4, 5.4, 4.6);
-    scene.add(key);
-    const fill = new THREE.DirectionalLight(0xffffff, 0.32);
-    fill.position.set(-4.2, -1.8, 3.2);
-    scene.add(fill);
-
-    const rig = new THREE.Group();
-    scene.add(rig);
-
-    /* ── 道具一：篮球 ───────────────────────── */
-    function leatherTexture() {
-      const c = document.createElement('canvas');
-      c.width = 1024; c.height = 512;
-      const g = c.getContext('2d');
-      g.fillStyle = '#c25a2a';
-      g.fillRect(0, 0, 1024, 512);
-      for (let i = 0; i < 3200; i++) {
-        g.fillStyle = 'rgba(' + (110 + Math.random() * 60 | 0) + ',' + (55 + Math.random() * 30 | 0) + ',22,' + (Math.random() * 0.10) + ')';
-        g.fillRect(Math.random() * 1024, Math.random() * 512, 2, 2);
-      }
-      g.strokeStyle = '#2a1a12';
-      g.lineWidth = 10;
-      g.lineCap = 'round';
-      g.beginPath(); g.moveTo(0, 256); g.lineTo(1024, 256); g.stroke();
-      [256, 768].forEach((u) => {
-        g.beginPath();
-        g.moveTo(u, 0);
-        g.bezierCurveTo(u - 130, 150, u - 130, 362, u, 512);
-        g.stroke();
+  /* 入场 */
+  var items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
       });
-      g.beginPath(); g.moveTo(0, 74); g.bezierCurveTo(320, 210, 704, 302, 1024, 438); g.stroke();
-      g.beginPath(); g.moveTo(0, 438); g.bezierCurveTo(320, 302, 704, 210, 1024, 74); g.stroke();
-      const tex = new THREE.CanvasTexture(c);
-      tex.colorSpace = THREE.SRGBColorSpace;
-      tex.anisotropy = 4;
-      return tex;
-    }
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.12});
+    items.forEach(function(el){ io.observe(el); });
+  }
 
-    const ball = new THREE.Mesh(
-      new THREE.SphereGeometry(1.14, 64, 44),
-      new THREE.MeshStandardMaterial({ map: leatherTexture(), roughness: 0.94, metalness: 0.0 })
-    );
-    ball.position.set(-2.62, 0.16, 0);
-    rig.add(ball);
-
-    /* ── 道具二：中分 ───────────────────────── */
-    const hair = new THREE.Group();
-    const skinMat = new THREE.MeshStandardMaterial({ color: 0xe8dbc8, roughness: 0.95 });
-    const hairMat = new THREE.MeshStandardMaterial({ color: INK, roughness: 0.88, side: THREE.DoubleSide });
-
-    const head = new THREE.Mesh(new THREE.SphereGeometry(0.72, 44, 32), skinMat);
-    head.scale.set(1, 1.1, 0.97);
-    hair.add(head);
-
-    const shell = new THREE.SphereGeometry(0.795, 44, 30, -Math.PI * 0.48, Math.PI * 0.96, 0, Math.PI * 0.62);
-    const leftLock = new THREE.Mesh(shell, hairMat);
-    const rightLock = new THREE.Mesh(shell, hairMat);
-    rightLock.rotation.y = Math.PI;
-    hair.add(leftLock, rightLock);
-
-    const earGeo = new THREE.SphereGeometry(0.15, 20, 14);
-    [-1, 1].forEach((s) => {
-      const ear = new THREE.Mesh(earGeo, skinMat);
-      ear.position.set(s * 0.7, -0.02, 0);
-      ear.scale.set(0.7, 1, 0.55);
-      hair.add(ear);
-    });
-    hair.position.set(0.05, 0.12, 0);
-    hair.scale.setScalar(0.95);
-    rig.add(hair);
-
-    /* ── 道具三：背带裤 ─────────────────────── */
-    const overalls = new THREE.Group();
-    const denimMat = new THREE.MeshStandardMaterial({ color: 0x2f3a4a, roughness: 0.9 });
-    const bibMat = new THREE.MeshStandardMaterial({ color: 0x3a4658, roughness: 0.9 });
-    const buttonMat = new THREE.MeshStandardMaterial({ color: GILT, roughness: 0.45, metalness: 0.55 });
-
-    const body = new THREE.Mesh(new THREE.BoxGeometry(1.02, 0.86, 0.38), denimMat);
-    body.position.y = 0.02;
-    overalls.add(body);
-
-    const bib = new THREE.Mesh(new THREE.BoxGeometry(0.66, 0.42, 0.4), bibMat);
-    bib.position.y = 0.55;
-    overalls.add(bib);
-
-    [-1, 1].forEach((s) => {
-      const strap = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.86, 0.08), denimMat);
-      strap.position.set(s * 0.31, 0.72, 0.17);
-      strap.rotation.z = s * -0.14;
-      overalls.add(strap);
-
-      const knob = new THREE.Mesh(new THREE.CylinderGeometry(0.058, 0.058, 0.06, 18), buttonMat);
-      knob.rotation.x = Math.PI / 2;
-      knob.position.set(s * 0.31, 0.74, 0.21);
-      overalls.add(knob);
-
-      const leg = new THREE.Mesh(new THREE.BoxGeometry(0.44, 0.74, 0.36), denimMat);
-      leg.position.set(s * 0.27, -0.76, 0);
-      overalls.add(leg);
-    });
-    overalls.position.set(2.6, 0.02, 0);
-    rig.add(overalls);
-
-    /* ── 影子（纸质淡影） ───────────────────── */
-    const shadowMat = new THREE.MeshBasicMaterial({ color: INK, transparent: true, opacity: 0.07, depthWrite: false });
-    [-2.62, 0.05, 2.6].forEach((x) => {
-      const s = new THREE.Mesh(new THREE.CircleGeometry(0.92, 40), shadowMat);
-      s.rotation.x = -Math.PI / 2;
-      s.position.set(x, -1.62, 0);
-      s.scale.set(1, 0.42, 1);
-      rig.add(s);
-    });
-
-    /* ── 布局与尺寸 ─────────────────────────── */
-    function resize() {
-      const w = Math.max(1, stage.clientWidth);
-      const h = Math.max(1, stage.clientHeight);
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      renderer.setPixelRatio(dpr);
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-    }
-    resize();
-    if (window.ResizeObserver) { new ResizeObserver(resize).observe(stage); }
-    else { window.addEventListener('resize', resize); }
-
-    /* ── 交互：拖动 / 视差 / 缩放 ───────────── */
-    let userY = 0, userX = 0, px = 0, py = 0;
-    let dragging = false, lastX = 0, lastY = 0;
-
-    cv.addEventListener('pointerdown', (e) => {
-      dragging = true; lastX = e.clientX; lastY = e.clientY;
-      cv.classList.add('dragging');
-      if (cv.setPointerCapture) { try { cv.setPointerCapture(e.pointerId); } catch (err) {} }
-    });
-    cv.addEventListener('pointermove', (e) => {
-      if (dragging) {
-        userY += (e.clientX - lastX) * 0.008;
-        userX += (e.clientY - lastY) * 0.005;
-        userX = Math.max(-0.55, Math.min(0.55, userX));
-        lastX = e.clientX; lastY = e.clientY;
-      } else {
-        const r = cv.getBoundingClientRect();
-        px = ((e.clientX - r.left) / r.width - 0.5) * 2;
-        py = ((e.clientY - r.top) / r.height - 0.5) * 2;
-      }
-    });
-    const stopDrag = () => { dragging = false; cv.classList.remove('dragging'); };
-    cv.addEventListener('pointerup', stopDrag);
-    cv.addEventListener('pointercancel', stopDrag);
-    cv.addEventListener('pointerleave', () => { px = 0; py = 0; });
-    cv.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      camera.position.z = Math.max(5.4, Math.min(12.5, camera.position.z + e.deltaY * 0.0035));
-    }, { passive: false });
-
-    /* ── 动画 ───────────────────────────────── */
-    const floaters = [
-      { o: ball, base: 0.16, amp: 0.10, sp: 0.85, ph: 0 },
-      { o: hair, base: 0.12, amp: 0.13, sp: 1.10, ph: 1.7 },
-      { o: overalls, base: 0.02, amp: 0.09, sp: 0.72, ph: 3.2 }
-    ];
-    let spin = 0;
-
-    function draw(now) {
-      const t = now / 1000;
-      spin += 0.0022;
-      floaters.forEach((p) => {
-        p.o.position.y = p.base + Math.sin(t * p.sp + p.ph) * p.amp;
-        p.o.rotation.y += 0.0026 * p.sp;
-      });
-      ball.rotation.z = Math.sin(t * 0.4) * 0.14;
-      if (!dragging) { userY *= 0.996; userX *= 0.99; }
-      rig.rotation.y = spin + userY + px * 0.16;
-      rig.rotation.x = userX + py * 0.10;
-      renderer.render(scene, camera);
-    }
-
-    if (reduce) {
-      draw(0);
-      renderer.render(scene, camera);
-    } else {
-      const loop = (now) => { draw(now); requestAnimationFrame(loop); };
-      requestAnimationFrame(loop);
-    }
-  })();
+  /* 阅读进度 */
+  var bar = document.getElementById('bar');
+  var ticking = false;
+  function paint(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = h > 0 ? Math.min(1, window.scrollY / h) : 0;
+    bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+  }, {passive:true});
+  window.addEventListener('resize', paint, {passive:true});
+  paint();
 })();
 </script>
-
 </body>
 </html>
