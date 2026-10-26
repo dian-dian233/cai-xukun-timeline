@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>蔡徐坤 · 来时路</title>
+<style>
+  :root{
+    --bg:#08070b; --fg:#f3eef7; --dim:#9a93a8;
+    --pink:#ff5c9e; --purple:#8b5cf6; --cyan:#22d3ee; --gold:#ffcc4d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--bg);color:var(--fg);font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;}
+  body{overflow-x:hidden;line-height:1.7;}
+  .glow{position:fixed;inset:auto;pointer-events:none;filter:blur(90px);opacity:.42;z-index:0;}
+  .g1{width:520px;height:520px;border-radius:50%;background:var(--pink);left:-160px;top:-120px;animation:float1 16s ease-in-out infinite;}
+  .g2{width:460px;height:460px;border-radius:50%;background:var(--purple);right:-150px;top:38%;animation:float2 20s ease-in-out infinite;}
+  .g3{width:380px;height:380px;border-radius:50%;background:var(--cyan);left:35%;bottom:-180px;animation:float1 24s ease-in-out infinite;opacity:.25;}
+  @keyframes float1{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(40px,50px,0)}}
+  @keyframes float2{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-50px,-40px,0)}}
+
+  .wrap{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:0 24px 120px;}
+  header{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:18px;position:relative;}
+  .kicker{font-size:13px;letter-spacing:.42em;color:var(--pink);text-transform:uppercase;}
+  h1{font-size:clamp(44px,9vw,92px);line-height:1.03;font-weight:900;letter-spacing:-.02em;
+     background:linear-gradient(100deg,#fff 10%,var(--pink) 45%,var(--purple) 72%,var(--cyan) 100%);
+     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .sub{color:var(--dim);font-size:clamp(15px,2vw,18px);max-width:560px;}
+  .hint{margin-top:26px;font-size:13px;color:#6f6880;display:flex;align-items:center;gap:10px;}
+  .ball{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;
+        background:radial-gradient(circle at 32% 30%,#ffb26b,#e2622b 70%);
+        box-shadow:0 0 0 1px #ffffff22,0 8px 24px #e2622b55; cursor:pointer;
+        font-size:18px;transition:transform .18s ease;}
+  .ball:hover{transform:translateY(-3px) rotate(12deg);}
+  .scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:12px;color:#655e75;letter-spacing:.3em;animation:bob 1.8s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.55}50%{transform:translate(-50%,8px);opacity:1}}
+
+  .eras{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 44px;}
+  .chip{font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid #ffffff1a;color:var(--dim);background:#ffffff08;}
+
+  .tl{position:relative;padding-left:34px;}
+  .tl::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:1px;
+    background:linear-gradient(180deg,transparent,#ffffff22 8%,#ffffff22 92%,transparent);}
+  .item{position:relative;padding:0 0 44px;opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .item.in{opacity:1;transform:none;}
+  .item::before{content:"";position:absolute;left:-30px;top:9px;width:11px;height:11px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--pink);box-shadow:0 0 0 4px #ff5c9e1f,0 0 16px #ff5c9e88;}
+  .item:nth-child(3n)::before{border-color:var(--purple);box-shadow:0 0 0 4px #8b5cf61f,0 0 16px #8b5cf688;}
+  .item:nth-child(3n+2)::before{border-color:var(--cyan);box-shadow:0 0 0 4px #22d3ee1f,0 0 16px #22d3ee88;}
+  .yr{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--gold);letter-spacing:.12em;}
+  .tt{font-size:clamp(19px,3vw,24px);font-weight:700;margin:4px 0 6px;}
+  .de{color:#b7b0c4;font-size:15px;}
+  .tag{display:inline-block;margin-top:10px;font-size:12px;color:var(--pink);border:1px solid #ff5c9e44;background:#ff5c9e12;padding:3px 10px;border-radius:999px;}
+
+  blockquote{margin:56px 0;padding:22px 24px;border-left:2px solid var(--purple);
+    background:linear-gradient(90deg,#8b5cf610,transparent);border-radius:0 12px 12px 0;color:#cfc7dd;font-size:15px;}
+  blockquote b{color:#fff;}
+
+  footer{margin-top:70px;padding-top:22px;border-top:1px solid #ffffff14;font-size:12.5px;color:#6f6880;}
+  footer a{color:var(--cyan);text-decoration:none;}
+  .kun{position:fixed;top:-40px;font-size:26px;pointer-events:none;z-index:5;animation:drop linear forwards;}
+  @keyframes drop{to{transform:translateY(112vh) rotate(720deg);opacity:.1}}
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+
+<div class="wrap">
+  <header>
+    <div class="kicker">CAI XUKUN · THE WAY HERE</div>
+    <h1>蔡徐坤<br/>来时路</h1>
+    <p class="sub">一个人怎么从选秀舞台走到全民玩梗的中心，又怎么把梗走成自己的路。<br/>这是一份用时间轴写的人物侧写 —— 有作品，有争议，也有互联网集体记忆。</p>
+    <div class="hint"><span class="ball" id="ball">🏀</span><span>点一下，试试看</span></div>
+    <div class="scroll">SCROLL</div>
+  </header>
+
+  <div class="eras">
+    <span class="chip">选秀少年</span>
+    <span class="chip">C 位出道</span>
+    <span class="chip">全民玩梗</span>
+    <span class="chip">舞台回归</span>
+  </div>
+
+  <div class="tl" id="tl">
+    <div class="item">
+      <div class="yr">1998</div>
+      <div class="tt">8 月 2 日，出生</div>
+      <div class="de">故事从这里开始。彼时没人知道，这个孩子二十年后会成为中文互联网最复杂的一个符号。</div>
+    </div>
+
+    <div class="item">
+      <div class="yr">2012</div>
+      <div class="tt">第一次站上舞台</div>
+      <div class="de">参加《向上吧！少年》，成绩不算亮眼，但那是他第一次被镜头认真对待。少年开始学着在灯光下呼吸。</div>
+      <span class="tag">起点</span>
+    </div>
+
+    <div class="item">
+      <div class="yr">2015</div>
+      <div class="tt">通过《星动亚洲》正式出道</div>
+      <div class="de">成为男子组合成员，第一次尝到"艺人"这两个字的分量：训练、通稿、舞台、以及随时可能被按下暂停键的命运。</div>
+    </div>
+
+    <div class="item">
+      <div class="yr">2018 · 春</div>
+      <div class="tt">《偶像练习生》第一名，C 位出道</div>
+      <div class="de">票数断层第一，成为限定团 NINE PERCENT 的队长。那一年他被叫作"顶流"，也被叫作"全民制作人pick 的那个男孩"。</div>
+      <span class="tag">高光时刻</span>
+    </div>
+
+    <div class="item">
+      <div class="yr">2018 · 夏</div>
+      <div class="tt">一支打篮球的视频，改变了叙事</div>
+      <div class="de">代言花絮里的一段篮球表演，在 B 站被拆成帧、配上音乐、做成上万个二创。"鸡你太美"从一句歌词变成一句网络口头禅，他从此活在了弹幕里 —— 喜欢他的人和不认识他的人，都在同一个梗里相遇。</div>
+      <span class="tag">全民玩梗</span>
+    </div>
+
+    <div class="item">
+      <div class="yr">2019</div>
+      <div class="tt">《YOUNG》与一个人的作品期</div>
+      <div class="de">团体活动收束，他开始用个人作品说话：EP、舞台、编舞参与度越来越高。争议最大的时候，他选择继续发歌。</div>
+    </div>
+
+    <div class="item">
+      <div class="yr">2020</div>
+      <div class="tt">《青春有你 2》制作人代表</div>
+      <div class="de">从被评判的人，变成评判别人的人。他在节目里说得最多的词是"舞台"，那是他唯一确定自己身份的地方。</div>
+    </div>
+
+    <div class="item">
+      <div class="yr">2020s</div>
+      <div class="tt">和梗共处</div>
+      <div class="de">"鸡你太美"成了中文互联网的基础语汇之一，甚至演变成一种跨圈层的黑色幽默。他本人极少正面回应 —— 沉默有时候也是一种回答。</div>
+      <span class="tag">符号化</span>
+    </div>
+
+    <div class="item">
+      <div class="yr">2023</div>
+      <div class="tt">风波与低谷</div>
+      <div class="de">一场私生活风波把他推到舆论中心，商业合作与公开活动一度收缩。这是那段来时路里最沉的石头。</div>
+    </div>
+
+    <div class="item">
+      <div class="yr">此后</div>
+      <div class="tt">还在走</div>
+      <div class="de">艺人的人生往往由高光和争议共同构成。他的"来时路"没有走完 —— 而互联网的记忆，永远比人的路更长。</div>
+      <span class="tag">未完待续</span>
+    </div>
+  </div>
+
+  <blockquote>
+    <b>来时路，去的方向</b><br/>
+    一个被玩梗的人，最终会不会被梗反噬，或者被梗成全？<br/>
+    答案不在弹幕里，在他还能不能站上舞台。
+  </blockquote>
+
+  <footer>
+    ⚠️ 本站为粉丝向 <b>迷因 / 时间轴</b> 单页，仅以公开报道与公开舞台信息整理，不含任何未证实指控，仅供娱乐与网络文化记录。<br/>
+    时间线若与官方信息有出入，以官方为准 · 图片与文字版权归原作者所有 · 由 <b>点点</b> 用「你说行就做」的劲头搭在 GitHub Pages 上 🍚
+  </footer>
+</div>
+
+<script>
+  /* 时间轴逐条淡入 */
+  const items = document.querySelectorAll('.item');
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:.18});
+  items.forEach((el,i)=>{ el.style.transitionDelay = (i%3)*60 + 'ms'; io.observe(el); });
+
+  /* 彩蛋：点篮球，掉篮球 */
+  const ball = document.getElementById('ball');
+  const emojis = ['🏀','🏀','🏀','🎵','🐔','✨'];
+  ball.addEventListener('click', ()=>{
+    for(let i=0;i<14;i++){
+      const s = document.createElement('span');
+      s.className = 'kun';
+      s.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      s.style.left = Math.random()*100 + 'vw';
+      s.style.animationDuration = (1.8 + Math.random()*1.6) + 's';
+      s.style.fontSize = (16 + Math.random()*22) + 'px';
+      document.body.appendChild(s);
+      setTimeout(()=>s.remove(), 3600);
+    }
+  });
+</script>
+</body>
+</html>
