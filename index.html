@@ -3,186 +3,238 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>蔡徐坤 · 来时路</title>
+<title>蔡徐坤 · 来时路｜一份演出节目单</title>
+<meta name="description" content="把一个人的履历写成一份演出节目单：六场戏，一段来时路。" />
 <style>
+  /* ── 纸张与油墨 ───────────────────────────── */
   :root{
-    --bg:#08070b; --fg:#f3eef7; --dim:#9a93a8;
-    --pink:#ff5c9e; --purple:#8b5cf6; --cyan:#22d3ee; --gold:#ffcc4d;
+    --paper:#eceadf;
+    --paper-2:#e3e0d3;
+    --ink:#191a1d;
+    --ink-2:#4b4c52;
+    --ink-3:#7c7d83;
+    --stamp:#8e2c34;     /* 剧院红：印章、场次号 */
+    --gilt:#9a7b3f;      /* 烫金：年份、细规线 */
+    --rule:rgba(25,26,29,.14);
+    --maxw:1080px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html,body{background:var(--bg);color:var(--fg);font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;}
-  body{overflow-x:hidden;line-height:1.7;}
-  .glow{position:fixed;inset:auto;pointer-events:none;filter:blur(90px);opacity:.42;z-index:0;}
-  .g1{width:520px;height:520px;border-radius:50%;background:var(--pink);left:-160px;top:-120px;animation:float1 16s ease-in-out infinite;}
-  .g2{width:460px;height:460px;border-radius:50%;background:var(--purple);right:-150px;top:38%;animation:float2 20s ease-in-out infinite;}
-  .g3{width:380px;height:380px;border-radius:50%;background:var(--cyan);left:35%;bottom:-180px;animation:float1 24s ease-in-out infinite;opacity:.25;}
-  @keyframes float1{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(40px,50px,0)}}
-  @keyframes float2{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-50px,-40px,0)}}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    font-size:16.5px;line-height:1.78;
+    /* 极细纸纹 */
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(255,255,255,.55), transparent 42%),
+      radial-gradient(circle at 82% 78%, rgba(154,123,63,.10), transparent 46%),
+      repeating-linear-gradient(92deg, rgba(25,26,29,.035) 0 1px, transparent 1px 4px);
+    background-attachment:fixed;
+  }
+  .serif{font-family:"Songti SC","Songti TC","Noto Serif CJK SC","Source Han Serif SC",STSong,SimSun,serif;}
 
-  .wrap{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:0 24px 120px;}
-  header{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:18px;position:relative;}
-  .kicker{font-size:13px;letter-spacing:.42em;color:var(--pink);text-transform:uppercase;}
-  h1{font-size:clamp(44px,9vw,92px);line-height:1.03;font-weight:900;letter-spacing:-.02em;
-     background:linear-gradient(100deg,#fff 10%,var(--pink) 45%,var(--purple) 72%,var(--cyan) 100%);
-     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-  .sub{color:var(--dim);font-size:clamp(15px,2vw,18px);max-width:560px;}
-  .hint{margin-top:26px;font-size:13px;color:#6f6880;display:flex;align-items:center;gap:10px;}
-  .ball{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;
-        background:radial-gradient(circle at 32% 30%,#ffb26b,#e2622b 70%);
-        box-shadow:0 0 0 1px #ffffff22,0 8px 24px #e2622b55; cursor:pointer;
-        font-size:18px;transition:transform .18s ease;}
-  .ball:hover{transform:translateY(-3px) rotate(12deg);}
-  .scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:12px;color:#655e75;letter-spacing:.3em;animation:bob 1.8s ease-in-out infinite;}
-  @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.55}50%{transform:translate(-50%,8px);opacity:1}}
+  /* ── 封面 ────────────────────────────────── */
+  .cover{
+    max-width:var(--maxw);margin:0 auto;padding:clamp(28px,6vw,64px) clamp(20px,5vw,56px) 0;
+    display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(20px,4vw,44px);
+    align-items:start;min-height:92vh;
+  }
+  .rail{display:flex;flex-direction:column;align-items:center;gap:18px;padding-top:6px;}
+  .rab{writing-mode:vertical-rl;font-family:"Songti SC",STSong,SimSun,serif;
+       font-size:clamp(46px,7.6vw,86px);font-weight:600;letter-spacing:.18em;line-height:1.02;
+       border-left:1px solid var(--rule);border-right:1px solid var(--rule);padding:0 14px;}
+  .rab small{font-size:.34em;letter-spacing:.5em;color:var(--ink-3);display:block;margin-top:.6em;}
+  .stamp{
+    --r:-9deg;
+    display:inline-block;transform:rotate(var(--r));
+    border:2px solid var(--stamp);color:var(--stamp);
+    font-family:"Songti SC",STSong,serif;font-weight:700;
+    padding:5px 10px 6px;border-radius:3px;letter-spacing:.24em;font-size:13px;
+    box-shadow:inset 0 0 0 1px rgba(142,44,52,.28);
+    opacity:0;animation:press .5s cubic-bezier(.2,.8,.2,1) .55s forwards;
+  }
+  @keyframes press{from{opacity:0;transform:rotate(var(--r)) scale(1.6)}to{opacity:.92;transform:rotate(var(--r)) scale(1)}}
 
-  .eras{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 44px;}
-  .chip{font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid #ffffff1a;color:var(--dim);background:#ffffff08;}
+  .bill{padding-top:4px;}
+  .kicker{font-family:"Songti SC",STSong,serif;font-size:13.5px;color:var(--ink-3);letter-spacing:.16em;}
+  h1{margin:.34em 0 .18em;font-size:clamp(30px,4.4vw,46px);line-height:1.22;font-weight:700;
+     font-family:"Songti SC",STSong,SimSun,serif;letter-spacing:.02em;}
+  .deck{color:var(--ink-2);max-width:44ch;font-size:17px;}
+  .meta{margin-top:28px;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);}
+  .meta dl{display:grid;grid-template-columns:auto 1fr;gap:0;}
+  .meta dt,.meta dd{padding:9px 0;border-top:1px solid var(--rule);font-size:14.5px;}
+  .meta dt{color:var(--ink-3);padding-right:22px;white-space:nowrap;letter-spacing:.06em;}
+  .meta dd{color:var(--ink);}
+  .meta dl > :nth-child(1),.meta dl > :nth-child(2){border-top:none;}
 
-  .tl{position:relative;padding-left:34px;}
-  .tl::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:1px;
-    background:linear-gradient(180deg,transparent,#ffffff22 8%,#ffffff22 92%,transparent);}
-  .item{position:relative;padding:0 0 44px;opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
-  .item.in{opacity:1;transform:none;}
-  .item::before{content:"";position:absolute;left:-30px;top:9px;width:11px;height:11px;border-radius:50%;
-    background:var(--bg);border:2px solid var(--pink);box-shadow:0 0 0 4px #ff5c9e1f,0 0 16px #ff5c9e88;}
-  .item:nth-child(3n)::before{border-color:var(--purple);box-shadow:0 0 0 4px #8b5cf61f,0 0 16px #8b5cf688;}
-  .item:nth-child(3n+2)::before{border-color:var(--cyan);box-shadow:0 0 0 4px #22d3ee1f,0 0 16px #22d3ee88;}
-  .yr{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--gold);letter-spacing:.12em;}
-  .tt{font-size:clamp(19px,3vw,24px);font-weight:700;margin:4px 0 6px;}
-  .de{color:#b7b0c4;font-size:15px;}
-  .tag{display:inline-block;margin-top:10px;font-size:12px;color:var(--pink);border:1px solid #ff5c9e44;background:#ff5c9e12;padding:3px 10px;border-radius:999px;}
+  .toc{margin-top:26px;font-size:14.5px;}
+  .toc ol{list-style:none;counter-reset:s;}
+  .toc li{counter-increment:s;display:grid;grid-template-columns:2.6em 1fr auto;gap:.7em;
+          padding:7px 0;border-bottom:1px dotted var(--rule);color:var(--ink-2);}
+  .toc li::before{content:counter(s);color:var(--stamp);font-family:"Songti SC",STSong,serif;font-weight:700;}
+  .toc .yr{color:var(--gilt);font-size:13.5px;letter-spacing:.06em;}
 
-  blockquote{margin:56px 0;padding:22px 24px;border-left:2px solid var(--purple);
-    background:linear-gradient(90deg,#8b5cf610,transparent);border-radius:0 12px 12px 0;color:#cfc7dd;font-size:15px;}
-  blockquote b{color:#fff;}
+  /* ── 正文：场次 ──────────────────────────── */
+  main{max-width:var(--maxw);margin:0 auto;padding:clamp(40px,7vw,80px) clamp(20px,5vw,56px) 0;}
+  .act{
+    display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:clamp(20px,4vw,44px);
+    padding:clamp(30px,5vw,52px) 0;border-top:1px solid var(--ink);
+  }
+  .act .side{padding-top:4px;}
+  .act .no{font-family:"Songti SC",STSong,serif;color:var(--stamp);font-size:15px;letter-spacing:.3em;}
+  .act .yr{display:block;margin-top:.5em;font-family:"Songti SC",STSong,serif;
+           font-size:clamp(22px,3vw,30px);color:var(--gilt);letter-spacing:.04em;}
+  .act h2{font-size:clamp(22px,3.2vw,31px);line-height:1.34;font-weight:700;
+          font-family:"Songti SC",STSong,SimSun,serif;letter-spacing:.01em;}
+  .act p{margin-top:.85em;color:var(--ink-2);max-width:62ch;}
+  .line{
+    margin-top:1.15em;padding:14px 0 14px 18px;border-left:3px solid var(--stamp);
+    font-family:"Kaiti SC",STKaiti,KaiTi,"Songti SC",serif;font-size:18px;color:var(--ink);
+    max-width:52ch;
+  }
+  .line span{display:block;margin-top:.4em;font-family:"PingFang SC",sans-serif;font-size:13px;color:var(--ink-3);font-style:normal;}
+  .note{
+    margin-top:22px;padding:14px 16px;background:var(--paper-2);border:1px solid var(--rule);
+    font-size:14px;color:var(--ink-3);max-width:62ch;
+  }
 
-  footer{margin-top:70px;padding-top:22px;border-top:1px solid #ffffff14;font-size:12.5px;color:#6f6880;}
-  footer a{color:var(--cyan);text-decoration:none;}
-  .kun{position:fixed;top:-40px;font-size:26px;pointer-events:none;z-index:5;animation:drop linear forwards;}
-  @keyframes drop{to{transform:translateY(112vh) rotate(720deg);opacity:.1}}
+  /* ── 谢幕 ────────────────────────────────── */
+  .curtain{max-width:var(--maxw);margin:0 auto;padding:clamp(48px,8vw,96px) clamp(20px,5vw,56px) 0;
+           border-top:1px solid var(--ink);}
+  .curtain h2{font-family:"Songti SC",STSong,serif;font-size:clamp(26px,4vw,40px);line-height:1.3;
+              max-width:30ch;letter-spacing:.01em;}
+  .curtain p{margin-top:1em;color:var(--ink-2);max-width:60ch;}
+  .colophon{max-width:var(--maxw);margin:clamp(44px,7vw,84px) auto 0;
+            padding:22px clamp(20px,5vw,56px) 80px;border-top:1px solid var(--rule);
+            font-size:13px;color:var(--ink-3);line-height:1.9;}
+  .colophon a{color:var(--stamp);text-decoration:none;border-bottom:1px solid rgba(142,44,52,.35);}
+  .colophon a:focus-visible,.toc li:focus-visible{outline:2px solid var(--stamp);outline-offset:3px;}
+
+  /* 入场：整页一次，不逐块弹跳 */
+  .rise{opacity:0;transform:translateY(14px);animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards;}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.3s}
+
+  @media (max-width:720px){
+    .cover,.act{grid-template-columns:1fr;}
+    .rail{flex-direction:row;align-items:flex-end;justify-content:space-between;}
+    .rab{writing-mode:horizontal-tb;border:none;padding:0;letter-spacing:.06em;}
+    .rab small{display:none;}
+    .act .side{display:flex;align-items:baseline;gap:14px;}
+    .act .yr{margin-top:0;}
+    body{font-size:16px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .rise,.stamp{animation:none;opacity:1;transform:none;}
+  }
 </style>
 </head>
 <body>
-<div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
 
-<div class="wrap">
-  <header>
-    <div class="kicker">CAI XUKUN · THE WAY HERE</div>
-    <h1>蔡徐坤<br/>来时路</h1>
-    <p class="sub">一个人怎么从选秀舞台走到全民玩梗的中心，又怎么把梗走成自己的路。<br/>这是一份用时间轴写的人物侧写 —— 有作品，有争议，也有互联网集体记忆。</p>
-    <div class="hint"><span class="ball" id="ball">🏀</span><span>点一下，试试看</span></div>
-    <div class="scroll">SCROLL</div>
-  </header>
-
-  <div class="eras">
-    <span class="chip">选秀少年</span>
-    <span class="chip">C 位出道</span>
-    <span class="chip">全民玩梗</span>
-    <span class="chip">舞台回归</span>
+<header class="cover">
+  <div class="rail rise d1">
+    <div class="rab serif">来时路<small>CAST · 2012—</small></div>
+    <div class="stamp">全本上演</div>
   </div>
 
-  <div class="tl" id="tl">
-    <div class="item">
-      <div class="yr">1998</div>
-      <div class="tt">8 月 2 日，出生</div>
-      <div class="de">故事从这里开始。彼时没人知道，这个孩子二十年后会成为中文互联网最复杂的一个符号。</div>
+  <div class="bill">
+    <p class="kicker rise d2">演出节目单 / 一人六场</p>
+    <h1 class="rise d2">蔡徐坤</h1>
+    <p class="deck rise d3">把一个人的履历，按舞台分场来读：试镜、出道、C 位、玩梗、风波，再到还没演完的下一幕。</p>
+
+    <div class="meta rise d3">
+      <dl>
+        <dt>主演</dt><dd>蔡徐坤</dd>
+        <dt>首演</dt><dd>2012 年，一档少年选秀</dd>
+        <dt>场次</dt><dd>六场，另有一场未排期</dd>
+        <dt>演出地点</dt><dd>舞台、直播间，以及整个中文互联网</dd>
+        <dt>时长</dt><dd>至今</dd>
+      </dl>
     </div>
 
-    <div class="item">
-      <div class="yr">2012</div>
-      <div class="tt">第一次站上舞台</div>
-      <div class="de">参加《向上吧！少年》，成绩不算亮眼，但那是他第一次被镜头认真对待。少年开始学着在灯光下呼吸。</div>
-      <span class="tag">起点</span>
-    </div>
-
-    <div class="item">
-      <div class="yr">2015</div>
-      <div class="tt">通过《星动亚洲》正式出道</div>
-      <div class="de">成为男子组合成员，第一次尝到"艺人"这两个字的分量：训练、通稿、舞台、以及随时可能被按下暂停键的命运。</div>
-    </div>
-
-    <div class="item">
-      <div class="yr">2018 · 春</div>
-      <div class="tt">《偶像练习生》第一名，C 位出道</div>
-      <div class="de">票数断层第一，成为限定团 NINE PERCENT 的队长。那一年他被叫作"顶流"，也被叫作"全民制作人pick 的那个男孩"。</div>
-      <span class="tag">高光时刻</span>
-    </div>
-
-    <div class="item">
-      <div class="yr">2018 · 夏</div>
-      <div class="tt">一支打篮球的视频，改变了叙事</div>
-      <div class="de">代言花絮里的一段篮球表演，在 B 站被拆成帧、配上音乐、做成上万个二创。"鸡你太美"从一句歌词变成一句网络口头禅，他从此活在了弹幕里 —— 喜欢他的人和不认识他的人，都在同一个梗里相遇。</div>
-      <span class="tag">全民玩梗</span>
-    </div>
-
-    <div class="item">
-      <div class="yr">2019</div>
-      <div class="tt">《YOUNG》与一个人的作品期</div>
-      <div class="de">团体活动收束，他开始用个人作品说话：EP、舞台、编舞参与度越来越高。争议最大的时候，他选择继续发歌。</div>
-    </div>
-
-    <div class="item">
-      <div class="yr">2020</div>
-      <div class="tt">《青春有你 2》制作人代表</div>
-      <div class="de">从被评判的人，变成评判别人的人。他在节目里说得最多的词是"舞台"，那是他唯一确定自己身份的地方。</div>
-    </div>
-
-    <div class="item">
-      <div class="yr">2020s</div>
-      <div class="tt">和梗共处</div>
-      <div class="de">"鸡你太美"成了中文互联网的基础语汇之一，甚至演变成一种跨圈层的黑色幽默。他本人极少正面回应 —— 沉默有时候也是一种回答。</div>
-      <span class="tag">符号化</span>
-    </div>
-
-    <div class="item">
-      <div class="yr">2023</div>
-      <div class="tt">风波与低谷</div>
-      <div class="de">一场私生活风波把他推到舆论中心，商业合作与公开活动一度收缩。这是那段来时路里最沉的石头。</div>
-    </div>
-
-    <div class="item">
-      <div class="yr">此后</div>
-      <div class="tt">还在走</div>
-      <div class="de">艺人的人生往往由高光和争议共同构成。他的"来时路"没有走完 —— 而互联网的记忆，永远比人的路更长。</div>
-      <span class="tag">未完待续</span>
-    </div>
+    <nav class="toc rise d3" aria-label="目录">
+      <ol>
+        <li><span>试镜：一个少年被镜头看见</span><span class="yr">2012</span></li>
+        <li><span>成团：第一次学会做艺人</span><span class="yr">2015</span></li>
+        <li><span>登顶：C 位与顶流</span><span class="yr">2018 · 春</span></li>
+        <li><span>转折：一支篮球视频</span><span class="yr">2018 · 夏</span></li>
+        <li><span>自述：从被评判到评判</span><span class="yr">2019—2020</span></li>
+        <li><span>中场：风波与安静</span><span class="yr">2023</span></li>
+      </ol>
+    </nav>
   </div>
+</header>
 
-  <blockquote>
-    <b>来时路，去的方向</b><br/>
-    一个被玩梗的人，最终会不会被梗反噬，或者被梗成全？<br/>
-    答案不在弹幕里，在他还能不能站上舞台。
-  </blockquote>
+<main>
 
-  <footer>
-    ⚠️ 本站为粉丝向 <b>迷因 / 时间轴</b> 单页，仅以公开报道与公开舞台信息整理，不含任何未证实指控，仅供娱乐与网络文化记录。<br/>
-    时间线若与官方信息有出入，以官方为准 · 图片与文字版权归原作者所有 · 由 <b>点点</b> 用「你说行就做」的劲头搭在 GitHub Pages 上 🍚
-  </footer>
-</div>
+  <section class="act">
+    <div class="side"><span class="no serif">第一场</span><span class="yr serif">2012</span></div>
+    <div>
+      <h2>试镜：一个少年被镜头看见</h2>
+      <p>成绩不算亮眼，镜头也没多分几秒。但那是他第一次站在真正的灯光下，也是第一次明白——这个行业先把人挑一遍，再决定给不给你台词。</p>
+      <div class="line">“那时候只是想去试试。”<span>—— 关于这段经历，他后来讲得很轻</span></div>
+    </div>
+  </section>
 
-<script>
-  /* 时间轴逐条淡入 */
-  const items = document.querySelectorAll('.item');
-  const io = new IntersectionObserver((es)=>{
-    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  }, {threshold:.18});
-  items.forEach((el,i)=>{ el.style.transitionDelay = (i%3)*60 + 'ms'; io.observe(el); });
+  <section class="act">
+    <div class="side"><span class="no serif">第二场</span><span class="yr serif">2015</span></div>
+    <div>
+      <h2>成团：第一次学会做艺人</h2>
+      <p>通过《星动亚洲》出道，成为组合成员。训练、通告、镜头前的分寸、镜头后的空档——所谓“艺人”两个字的分量，是从这里开始背上的。</p>
+      <p>这段日子不怎么被提起，但它决定了后面所有的台风：他是从团体里长出来的那种表演者。</p>
+    </div>
+  </section>
 
-  /* 彩蛋：点篮球，掉篮球 */
-  const ball = document.getElementById('ball');
-  const emojis = ['🏀','🏀','🏀','🎵','🐔','✨'];
-  ball.addEventListener('click', ()=>{
-    for(let i=0;i<14;i++){
-      const s = document.createElement('span');
-      s.className = 'kun';
-      s.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-      s.style.left = Math.random()*100 + 'vw';
-      s.style.animationDuration = (1.8 + Math.random()*1.6) + 's';
-      s.style.fontSize = (16 + Math.random()*22) + 'px';
-      document.body.appendChild(s);
-      setTimeout(()=>s.remove(), 3600);
-    }
-  });
-</script>
+  <section class="act">
+    <div class="side"><span class="no serif">第三场</span><span class="yr serif">2018 · 春</span></div>
+    <div>
+      <h2>登顶：C 位与顶流</h2>
+      <p>《偶像练习生》决赛夜票数断层第一，以 C 位出道，并成为限定团 NINE PERCENT 的队长。那一年，“顶流”这个词几乎是围着他被发明出来的。</p>
+      <div class="line">“他站在中间，是观众一票一票投出来的。”<span>—— 那一季的选拔逻辑，本身就是节目最大的叙事</span></div>
+    </div>
+  </section>
+
+  <section class="act">
+    <div class="side"><span class="no serif">第四场</span><span class="yr serif">2018 · 夏</span></div>
+    <div>
+      <h2>转折：一支篮球视频</h2>
+      <p>代言花絮里的一段篮球表演，被拆成帧、配上音乐、剪成上万个版本。“鸡你太美”从一个谐音耳朵听错的东西，变成了一句全民口头禅——原词其实写的是“只因你太美”。</p>
+      <p>从此他活在了弹幕里。喜欢他的人、不认识他的人、纯粹来玩梗的人，在同一个梗里相遇。一个偶像的公众形象，第一次不是由作品、也不是由他自己决定的。</p>
+      <div class="note">这一场没有台词，只有评论。它是整份节目单里最长的一幕，也最难落幕。</div>
+    </div>
+  </section>
+
+  <section class="act">
+    <div class="side"><span class="no serif">第五场</span><span class="yr serif">2019—2020</span></div>
+    <div>
+      <h2>自述：从被评判到评判</h2>
+      <p>团体活动收束，他开始用个人作品说话，编舞与制作的参与度越来越高。2020 年，他坐在《青春有你 2》制作人代表的位子上——从被投票的人，变成打分的人。</p>
+      <div class="line">“舞台是我唯一确定的事。”<span>—— 他在节目里反复说的，大概也是唯一没被梗覆盖的一句话</span></div>
+    </div>
+  </section>
+
+  <section class="act">
+    <div class="side"><span class="no serif">第六场</span><span class="yr serif">2023</span></div>
+    <div>
+      <h2>中场：风波与安静</h2>
+      <p>一场私生活风波把他推到舆论中心，商业合作与公开活动一度收缩。剧场灯暗下来的时候，没有人能替他演出这一段。</p>
+      <p>这是他“来时路”上最沉的一块石头，也是公众人物必须自己走过去的部分。</p>
+    </div>
+  </section>
+
+</main>
+
+<section class="curtain">
+  <h2 class="serif">谢幕之后，还有一场没排期</h2>
+  <p>一个人被玩梗，最后会被梗吞掉，还是被梗成全？答案不在弹幕里，而在他还能不能重新站上舞台、并且拿得出东西。</p>
+  <p>这份节目单到 2023 年就停了，因为后面的戏还没排完。</p>
+</section>
+
+<footer class="colophon">
+  本站是一份粉丝向的<b>迷因 · 时间轴</b>单页，内容只取自公开报道与公开舞台信息，不含未经证实的指控与评价；若与官方说法有出入，以官方为准。<br />
+  文字、版式与代码由 <a href="https://github.com/dian-dian233" rel="noopener">点点</a> 制作 · 源码在 <a href="https://github.com/dian-dian233/cai-xukun-timeline" rel="noopener">GitHub</a> · 一言不合就重排一版 🍚
+</footer>
+
 </body>
 </html>
