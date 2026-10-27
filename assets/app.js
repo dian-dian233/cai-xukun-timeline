@@ -260,6 +260,20 @@
     } else { run(); }
   })();
 
+  /* ─────────── 回声：点一句飞起来 ─────────── */
+  Array.prototype.forEach.call(document.querySelectorAll('.echo'), function (el) {
+    var line = el.querySelector('.echo-line');
+    if (!line) return;
+    function fire(e) {
+      var r = line.getBoundingClientRect();
+      popText(r.left + r.width / 2, r.top + Math.min(r.height / 2, 40), (line.textContent || '').trim());
+    }
+    el.addEventListener('click', fire);
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fire(e); }
+    });
+  });
+
   /* ─────────── 首屏光斑 ─────────── */
   var hero = document.querySelector('.hero');
   if (!reduce && hero && window.matchMedia('(hover:hover)').matches) {
